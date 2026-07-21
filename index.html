@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
 
 <meta charset="UTF-8">
@@ -12,6 +13,7 @@
 
 <style>
 
+
 *{
     margin:0;
     padding:0;
@@ -20,24 +22,30 @@
 
 
 body{
+
     background:#0d0d0d;
     color:#fff;
     font-family:'Poppins',sans-serif;
+
 }
 
 
 .container{
+
     width:90%;
     max-width:900px;
     margin:auto;
     padding:40px 0;
+
 }
 
 
 
 .hero{
+
     text-align:center;
     margin-bottom:40px;
+
 }
 
 
@@ -73,6 +81,7 @@ body{
 
 
 
+
 .card{
 
     background:#171717;
@@ -94,6 +103,7 @@ body{
 
 
 
+
 .section{
 
     margin-bottom:25px;
@@ -110,6 +120,7 @@ body{
 
 
 
+
 .price-list li{
 
     list-style:none;
@@ -121,6 +132,7 @@ body{
     transition:.3s;
 
 }
+
 
 
 
@@ -144,6 +156,7 @@ body{
 
 
 
+
 .disabled-price:hover{
 
     background:#222!important;
@@ -161,6 +174,7 @@ body{
     font-weight:700;
 
 }
+
 
 
 
@@ -221,6 +235,7 @@ body{
 
 
 
+
 .payment{
 
     background:#222;
@@ -229,6 +244,7 @@ body{
     margin:20px 0;
 
 }
+
 
 
 
@@ -241,8 +257,10 @@ body{
     color:white;
     text-decoration:none;
     font-weight:bold;
+    margin-top:10px;
 
 }
+
 
 
 
@@ -253,6 +271,7 @@ body{
     cursor:pointer;
 
 }
+
 
 
 
@@ -291,11 +310,13 @@ footer{
 
 
 
+
 <h1>
 
 CS Boost
 
 </h1>
+
 
 
 
@@ -345,7 +366,9 @@ Push Rank Class Squad dengan cepat, aman, dan terpercaya.
 
 
 
+
 <ul class="price-list">
+
 
 
 
@@ -450,6 +473,7 @@ Rp100.000
 
 
 
+
 <div class="section">
 
 
@@ -459,6 +483,7 @@ Rp100.000
 👥 Promo Duo Squad
 
 </h3>
+
 
 
 
@@ -475,11 +500,13 @@ Order minimal 100 Star.
 
 
 
+
 <li>
 
 Teman juga order 100 Star.
 
 </li>
+
 
 
 
@@ -496,6 +523,13 @@ Teman juga order 100 Star.
 
 
 </div>
+
+
+
+
+
+
+
 <div class="vip" onclick="checkout('Paket VIP 14 Hari','300000')">
 
 
@@ -508,11 +542,15 @@ Teman juga order 100 Star.
 
 
 
+
+
 <p>
 
 ⭐ Target 25 Star / Hari
 
 </p>
+
+
 
 
 
@@ -526,11 +564,14 @@ Teman juga order 100 Star.
 
 
 
+
 <div class="vip-price">
 
 Rp300.000
 
 </div>
+
+
 
 
 
@@ -548,6 +589,8 @@ Rp300.000
 
 
 
+
+
 <p style="margin-top:15px;font-weight:700;">
 
 👆 Klik untuk Order VIP
@@ -557,16 +600,7 @@ Rp300.000
 
 
 </div>
-
-
-
-
-
-
-
-
 <div class="section">
-
 
 
 <h3>
@@ -574,7 +608,6 @@ Rp300.000
 📝 Catatan
 
 </h3>
-
 
 
 
@@ -591,17 +624,10 @@ target hari tersebut dianggap selesai.
 
 
 
-
-
 </div>
 
 
-
 </div>
-
-
-
-
 
 
 
@@ -628,7 +654,9 @@ target hari tersebut dianggap selesai.
 
 
 
+
 <p id="namaOrder"></p>
+
 
 
 
@@ -643,13 +671,9 @@ target hari tersebut dianggap selesai.
 <div class="payment">
 
 
-
 Bayar melalui:
 
-
-
 <br><br>
-
 
 
 <b style="color:#00e5ff;">
@@ -660,9 +684,7 @@ DANA / QRIS
 
 
 
-
 <br><br>
-
 
 
 
@@ -671,13 +693,11 @@ Nomor DANA:
 <br>
 
 
-
 <b>
 
 081310575077
 
 </b>
-
 
 
 
@@ -692,12 +712,12 @@ Atas Nama:
 <br>
 
 
-
 <b>
 
 Fatan Trilaksono
 
 </b>
+
 
 
 
@@ -709,12 +729,10 @@ Fatan Trilaksono
 
 
 
-<a id="waBtn" class="pay-btn">
+<a id="waBtn" class="pay-btn" target="_blank">
 
 
-
-✅ Saya Sudah Bayar
-
+✅ Konfirmasi Order via WhatsApp
 
 
 </a>
@@ -743,10 +761,7 @@ Tutup
 </div>
 
 
-
 </div>
-
-
 
 
 
@@ -756,12 +771,15 @@ Tutup
 <footer>
 
 
-
 © 2026 CS Boost • Fast • Safe • Trusted
 
 
-
 </footer>
+
+
+
+
+
 <script>
 
 
@@ -780,7 +798,19 @@ if(star === null){
 
 
 
+if(star.trim() === ""){
+
+    alert("Jumlah Star belum diisi.");
+
+    return;
+
+}
+
+
+
+
 star = Number(star);
+
 
 
 
@@ -793,7 +823,6 @@ if(!Number.isInteger(star)){
     return;
 
 }
-
 
 
 
@@ -824,8 +853,8 @@ if(star > 200){
 
 
 
-// Custom Bintang selalu harga normal
-// 1 Star = Rp1.500
+// Custom Bintang
+// Harga tetap Rp1.500 / Star
 
 let harga = star * 1500;
 
@@ -836,8 +865,6 @@ checkout(star + " Star", harga);
 
 
 }
-
-
 
 
 
@@ -857,8 +884,7 @@ document.getElementById("popup").style.display="flex";
 
 document.getElementById("namaOrder").innerHTML =
 
-"Pesanan: " + nama;
-
+"Pesanan: ⭐ " + nama;
 
 
 
@@ -873,12 +899,11 @@ document.getElementById("hargaOrder").innerHTML =
 
 
 
-
 let pesan =
 
 "Halo CS Boost 👋\n\n" +
 
-"Saya sudah melakukan pembayaran.\n\n" +
+"Saya ingin konfirmasi order.\n\n" +
 
 "Pesanan: ⭐ " + nama +
 
@@ -887,7 +912,6 @@ let pesan =
 Number(harga).toLocaleString("id-ID") +
 
 "\n\nMohon dicek dan diproses. Terima kasih.";
-
 
 
 
@@ -903,9 +927,7 @@ encodeURIComponent(pesan);
 
 
 
-
 }
-
 
 
 
@@ -917,9 +939,7 @@ encodeURIComponent(pesan);
 function tutup(){
 
 
-
 document.getElementById("popup").style.display="none";
-
 
 
 }
@@ -927,6 +947,7 @@ document.getElementById("popup").style.display="none";
 
 
 </script>
+
 
 
 
