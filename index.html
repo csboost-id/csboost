@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -47,28 +48,20 @@ body{
 .hero h1{
     font-size:50px;
     color:#ff9900;
-    margin-bottom:10px;
 }
 
 .hero p{
-    color:#cfcfcf;
-    font-size:16px;
+    color:#ccc;
 }
+
 
 .card{
     background:#171717;
     border:1px solid #2f2f2f;
     border-radius:18px;
     padding:28px;
-    margin-bottom:25px;
-    transition:.3s;
 }
 
-.card:hover{
-    transform:translateY(-5px);
-    border-color:#ff9900;
-    box-shadow:0 0 20px rgba(255,153,0,.25);
-}
 
 .card h2{
     color:#ff9900;
@@ -76,105 +69,177 @@ body{
     margin-bottom:25px;
 }
 
+
 .section{
     margin-bottom:25px;
 }
 
+
 .section h3{
     margin-bottom:10px;
-    color:#ffffff;
 }
 
-.section ul{
-    padding-left:20px;
-}
 
-.section li{
-    color:#dddddd;
+.price-list li{
+
+    list-style:none;
+    background:#222;
+    padding:15px;
+    border-radius:12px;
     margin:10px 0;
-    line-height:1.6;
+    cursor:pointer;
+    transition:.3s;
+
 }
+
+
+.price-list li:hover{
+
+    background:#ff9900;
+    color:#000;
+    transform:scale(1.03);
+
+}
+
 
 .price{
+
     color:#ffd54a;
     font-weight:700;
-    font-size:18px;
+
 }
+
+
 
 .vip{
-    margin:25px 0;
-    background:linear-gradient(135deg,#ff9900,#ffb84d);
-    border-radius:15px;
-    padding:20px;
-    text-align:center;
-    color:#111;
+
+margin:25px 0;
+background:linear-gradient(135deg,#ff9900,#ffb84d);
+border-radius:15px;
+padding:20px;
+text-align:center;
+color:#111;
+
 }
 
-.vip h3{
-    margin-bottom:12px;
+
+.vip-price{
+
+font-size:34px;
+font-weight:700;
+color:white;
+
 }
 
-.vip p{
-    margin:6px 0;
-    font-weight:600;
-}
-
-.vip .vip-price{
-    margin-top:15px;
-    font-size:34px;
-    font-weight:700;
-    color:#ffffff;
-    text-shadow:0 2px 8px rgba(0,0,0,.35);
-}
-
-.vip .promo{
-    margin-top:15px;
-    color:#fff;
-    font-size:32px;
-    font-weight:700;
-}
-
-.vip .benefit{
-    margin-top:15px;
-    font-size:14px;
-    color:#222;
-}
-
-.button{
-    display:inline-block;
-    margin-top:10px;
-    padding:15px 38px;
-    background:#25D366;
-    color:#fff;
-    text-decoration:none;
-    font-weight:700;
-    border-radius:50px;
-    transition:.3s;
-}
-
-.button:hover{
-    background:#1fb95c;
-    transform:scale(1.05);
-}
 
 .button-area{
-    text-align:center;
+
+text-align:center;
+margin-top:25px;
+
 }
 
+
+
+.button{
+
+display:inline-block;
+padding:15px 38px;
+background:#25D366;
+color:white;
+text-decoration:none;
+font-weight:bold;
+border-radius:50px;
+
+}
+
+
+
+/* POPUP */
+
+.popup{
+
+display:none;
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.8);
+justify-content:center;
+align-items:center;
+z-index:999;
+
+}
+
+
+.popup-box{
+
+background:#171717;
+padding:30px;
+border-radius:20px;
+width:90%;
+max-width:400px;
+text-align:center;
+border:2px solid #ff9900;
+
+}
+
+
+.popup-box h2{
+
+color:#ff9900;
+
+}
+
+
+.payment{
+
+background:#222;
+padding:15px;
+border-radius:12px;
+margin:20px 0;
+
+}
+
+
+.pay-btn{
+
+display:block;
+background:#25D366;
+padding:14px;
+border-radius:50px;
+color:white;
+text-decoration:none;
+font-weight:bold;
+
+}
+
+
+.close{
+
+margin-top:15px;
+color:#aaa;
+cursor:pointer;
+
+}
+
+
 footer{
-    text-align:center;
-    padding:30px;
-    color:#888;
-    font-size:14px;
+
+text-align:center;
+padding:30px;
+color:#888;
+
 }
 
 </style>
 
 </head>
 
+
 <body>
 
+
 <div class="container">
+
 
 <div class="hero">
 
@@ -182,137 +247,254 @@ footer{
 🔥 Trusted Joki Free Fire
 </div>
 
+
 <h1>CS Boost</h1>
+
 
 <p>
 Push Rank Class Squad dengan cepat, aman, dan terpercaya.
 </p>
 
+
 </div>
+
 
 
 <div class="card">
 
-<h2>⭐ Jasa Joki Free Fire ⭐</h2>
+
+<h2>
+⭐ Jasa Joki Free Fire ⭐
+</h2>
+
 
 
 <div class="section">
+
 
 <h3>📌 Daftar Harga</h3>
 
-<ul>
 
-<li>
-Per Star =
-<span class="price">Rp1.500</span>
+<ul class="price-list">
+
+
+<li onclick="checkout('Per Star','1500')">
+⭐ Per Star =
+<span class="price">
+Rp1.500
+</span>
 </li>
 
-<li>
-14 Star =
-<span class="price">Rp21.000</span>
-<span style="color:#ff4d4d;font-weight:700;">(TERBATAS)</span>
+
+
+<li onclick="checkout('14 Star','21000')">
+
+⭐ 14 Star =
+<span class="price">
+Rp21.000
+</span>
+
+<span style="color:#ff4d4d">
+(TERBATAS)
+</span>
+
 </li>
 
-<li>
-60 Star =
-<span class="price">Rp78.000</span>
+
+
+<li onclick="checkout('60 Star','78000')">
+
+⭐ 60 Star =
+<span class="price">
+Rp78.000
+</span>
+
 </li>
 
-<li>
-100 Star =
-<span class="price">Rp100.000</span>
+
+
+<li onclick="checkout('100 Star','100000')">
+
+⭐ 100 Star =
+<span class="price">
+Rp100.000
+</span>
+
 </li>
+
+
 
 </ul>
 
+
 </div>
+
 
 
 
 <div class="section">
 
-<h3>👥 Promo Duo Squad</h3>
+<h3>
+👥 Promo Duo Squad
+</h3>
+
 
 <ul>
 
 <li>
-Setiap pemain melakukan order minimal <b>100 Star</b>.
+Order minimal 100 Star.
 </li>
 
 <li>
-Contoh: Kamu order 100 Star dan temanmu juga order 100 Star.
+Teman juga order 100 Star.
 </li>
 
 <li>
-🎁 Masing-masing akun mendapatkan bonus <b>+10 Star</b>.
+🎁 Bonus masing-masing +10 Star.
 </li>
+
 
 </ul>
 
+
 </div>
+
+
 
 
 
 <div class="vip">
 
-<h3>💎 Paket VIP (14 Hari)</h3>
 
-<p>⭐ Target : 25 Star / Hari</p>
+<h3>
+💎 Paket VIP 14 Hari
+</h3>
 
-<p>⭐ Total : 350 Star</p>
 
-<div class="promo">
-🔥 Promo VIP:
-<br>
+<p>
+⭐ Target 25 Star / Hari
+</p>
+
+
+<p>
+⭐ Total 350 Star
+</p>
+
+
+<div class="vip-price">
 Rp300.000
 </div>
 
-<div class="benefit">
 
-🎁 Keuntungan VIP:
+<p>
+🎁 Prioritas pengerjaan
 <br>
-• Prioritas pengerjaan
-<br>
-• Target harian lebih teratur
-<br>
-• Monitoring progress
+🎁 Monitoring progress
+</p>
+
 
 </div>
 
-</div>
+
 
 
 
 <div class="section">
 
-<h3>📝 Catatan</h3>
 
-<ul>
+<h3>
+📝 Catatan
+</h3>
 
-<li>
-Apabila akun tidak dimainkan selama lebih dari 12 jam,
-target pada hari tersebut dianggap selesai dan tidak dapat diganti.
-</li>
 
-</ul>
+<p>
+
+Apabila akun tidak dimainkan lebih dari 12 jam,
+target hari tersebut dianggap selesai.
+
+</p>
+
 
 </div>
 
 
+
 </div>
 
 
 
-<div class="button-area">
+</div>
 
-<a href="https://wa.me/6283824959777" class="button">
-📲 Order via WhatsApp
+
+
+
+<!-- POPUP -->
+
+<div class="popup" id="popup">
+
+
+<div class="popup-box">
+
+
+<h2>
+💳 Checkout
+</h2>
+
+
+<p id="namaOrder"></p>
+
+
+<h2 id="hargaOrder"></h2>
+
+
+
+<div class="payment">
+
+Bayar melalui:
+
+<br><br>
+
+<b style="color:#00e5ff;">
+DANA / QRIS
+</b>
+
+<br><br>
+
+Nomor DANA:
+<br>
+
+<b>
+08xxxxxxxxxx
+</b>
+
+
+</div>
+
+
+
+
+<a id="waBtn" class="pay-btn">
+
+✅ Saya Sudah Bayar
+
 </a>
 
+
+
+<div class="close" onclick="tutup()">
+
+Tutup
+
+</div>
+
+
+
 </div>
 
 
 </div>
+
+
 
 
 
@@ -323,5 +505,53 @@ target pada hari tersebut dianggap selesai dan tidak dapat diganti.
 </footer>
 
 
+
+
+<script>
+
+
+function checkout(nama,harga){
+
+
+document.getElementById("popup").style.display="flex";
+
+
+document.getElementById("namaOrder").innerHTML=
+"Pesanan: "+nama;
+
+
+document.getElementById("hargaOrder").innerHTML=
+"Rp "+Number(harga).toLocaleString("id-ID");
+
+
+
+let pesan=
+"Halo CS Boost saya ingin order "+
+nama+
+" dengan harga Rp "+
+Number(harga).toLocaleString("id-ID");
+
+
+
+document.getElementById("waBtn").href=
+"https://wa.me/6283824959777?text="+encodeURIComponent(pesan);
+
+
+}
+
+
+
+
+function tutup(){
+
+document.getElementById("popup").style.display="none";
+
+}
+
+
+</script>
+
+
 </body>
 </html>
+```
