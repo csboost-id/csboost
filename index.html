@@ -240,7 +240,7 @@ Rp1.500
 
 ⭐ Custom Bintang =
 <span class="price">
-Min. 30⭐
+(Min. 12⭐)
 </span>
 
 </li>
@@ -466,7 +466,7 @@ Tutup
 
 function customStar(){
 
-let star = prompt("Masukkan jumlah Star (Minimal 30⭐ - Maksimal 999⭐)");
+let star = prompt("Masukkan jumlah Star (Minimal 12⭐ - Maksimal 999⭐)");
 
 if(star === null){
     return;
@@ -481,8 +481,8 @@ if(!Number.isInteger(star)){
 }
 
 
-if(star < 30){
-    alert("Minimal order 30 Star.");
+if(star < 12){
+    alert("Minimal order 12 Star.");
     return;
 }
 
