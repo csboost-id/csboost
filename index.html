@@ -228,12 +228,81 @@ padding:30px;
 color:#888;
 
 }
+/* FLOATING SOCIAL BUTTON */
 
+.social-float{
+    position:fixed;
+    right:20px;
+    bottom:20px;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    z-index:9999;
+}
+
+
+.social-float a{
+
+    width:55px;
+    height:55px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-decoration:none;
+    font-size:28px;
+    color:white;
+    box-shadow:0 5px 15px rgba(0,0,0,.4);
+    transition:.3s;
+
+}
+
+
+.social-float a:hover{
+
+    transform:scale(1.1);
+
+}
+
+
+.whatsapp{
+
+    background:#25D366;
+
+}
+
+
+.tiktok{
+
+    background:#000;
+
+}
 </style>
 
 </head>
 
+<div class="social-float">
 
+
+<a class="whatsapp" 
+href="https://wa.me/6283824959777" 
+target="_blank">
+
+🟢
+
+</a>
+
+
+<a class="tiktok" 
+href="LINK_TIKTOK_KAMU" 
+target="_blank">
+
+🎵
+
+</a>
+
+
+</div>
 <body>
 
 
