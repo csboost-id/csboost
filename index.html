@@ -13,7 +13,6 @@
 
 <style>
 
-
 *{
     margin:0;
     padding:0;
@@ -40,14 +39,12 @@ body{
 }
 
 
-
 .hero{
 
     text-align:center;
     margin-bottom:40px;
 
 }
-
 
 
 .badge{
@@ -63,7 +60,6 @@ body{
 }
 
 
-
 .hero h1{
 
     font-size:50px;
@@ -72,13 +68,11 @@ body{
 }
 
 
-
 .hero p{
 
     color:#ccc;
 
 }
-
 
 
 
@@ -92,7 +86,6 @@ body{
 }
 
 
-
 .card h2{
 
     color:#ff9900;
@@ -102,8 +95,6 @@ body{
 }
 
 
-
-
 .section{
 
     margin-bottom:25px;
@@ -111,14 +102,11 @@ body{
 }
 
 
-
 .section h3{
 
     margin-bottom:10px;
 
 }
-
-
 
 
 .price-list li{
@@ -134,8 +122,6 @@ body{
 }
 
 
-
-
 .price-list li:hover{
 
     background:#ff9900;
@@ -145,16 +131,12 @@ body{
 }
 
 
-
-
 .disabled-price{
 
     cursor:not-allowed!important;
     opacity:.6;
 
 }
-
-
 
 
 .disabled-price:hover{
@@ -166,16 +148,12 @@ body{
 }
 
 
-
-
 .price{
 
     color:#ffd54a;
     font-weight:700;
 
 }
-
-
 
 
 .vip{
@@ -190,7 +168,6 @@ body{
 }
 
 
-
 .vip-price{
 
     font-size:34px;
@@ -198,6 +175,7 @@ body{
     color:white;
 
 }
+
 
 .popup{
 
@@ -212,19 +190,19 @@ body{
 }
 
 
-
 .popup-box{
 
     background:#171717;
     padding:30px;
     border-radius:20px;
     width:90%;
-    max-width:400px;
+    max-width:420px;
     text-align:center;
     border:2px solid #ff9900;
+    max-height:90vh;
+    overflow-y:auto;
 
 }
-
 
 
 .popup-box h2{
@@ -232,8 +210,6 @@ body{
     color:#ff9900;
 
 }
-
-
 
 
 .payment{
@@ -246,6 +222,50 @@ body{
 }
 
 
+.copy-btn{
+
+    width:100%;
+    margin-top:12px;
+    padding:12px;
+    border:none;
+    border-radius:50px;
+    background:#ff9900;
+    color:#111;
+    font-weight:bold;
+    cursor:pointer;
+
+}
+
+
+.input-group{
+
+    text-align:left;
+    margin-top:20px;
+
+}
+
+
+.input-group label{
+
+    display:block;
+    margin-bottom:6px;
+    color:#ddd;
+
+}
+
+
+.input-group input{
+
+    width:100%;
+    padding:13px;
+    border:none;
+    outline:none;
+    border-radius:12px;
+    background:#252525;
+    color:white;
+    margin-bottom:15px;
+
+}
 
 
 .pay-btn{
@@ -258,10 +278,9 @@ body{
     text-decoration:none;
     font-weight:bold;
     margin-top:10px;
+    cursor:pointer;
 
 }
-
-
 
 
 .close{
@@ -273,8 +292,6 @@ body{
 }
 
 
-
-
 footer{
 
     text-align:center;
@@ -282,8 +299,6 @@ footer{
     color:#888;
 
 }
-
-
 
 </style>
 
@@ -293,13 +308,10 @@ footer{
 <body>
 
 
-
 <div class="container">
 
 
-
 <div class="hero">
-
 
 
 <div class="badge">
@@ -309,15 +321,11 @@ footer{
 </div>
 
 
-
-
 <h1>
 
 CS Boost
 
 </h1>
-
-
 
 
 <p>
@@ -327,17 +335,10 @@ Push Rank Class Squad dengan cepat, aman, dan terpercaya.
 </p>
 
 
-
 </div>
 
 
-
-
-
-
-
 <div class="card">
-
 
 
 <h2>
@@ -345,16 +346,7 @@ Push Rank Class Squad dengan cepat, aman, dan terpercaya.
 ⭐ Jasa Joki Free Fire ⭐
 
 </h2>
-
-
-
-
-
-
-
 <div class="section">
-
-
 
 <h3>
 
@@ -363,19 +355,10 @@ Push Rank Class Squad dengan cepat, aman, dan terpercaya.
 </h3>
 
 
-
-
-
-
 <ul class="price-list">
 
 
-
-
-
-
 <li class="disabled-price">
-
 
 ⭐ Per Star =
 
@@ -385,40 +368,27 @@ Rp1.500
 
 </span>
 
-
 </li>
-
-
-
-
 
 
 
 <li onclick="customStar()">
 
-
-
 ⭐ Custom Bintang =
+
 <span class="price">
+
 Rp1.500 / ⭐ (Min. 12⭐ - Max. 200⭐)
+
 </span>
-
-
 
 </li>
 
 
 
-
-
-
-
-<li onclick="checkout('60 Star','78000')">
-
-
+<li onclick="checkout('60 Star',78000)">
 
 ⭐ 60 Star =
-
 
 <span class="price">
 
@@ -426,22 +396,13 @@ Rp78.000
 
 </span>
 
-
-
 </li>
 
 
 
-
-
-
-
-<li onclick="checkout('100 Star','100000')">
-
-
+<li onclick="checkout('100 Star',100000)">
 
 ⭐ 100 Star =
-
 
 <span class="price">
 
@@ -449,17 +410,10 @@ Rp100.000
 
 </span>
 
-
-
 </li>
 
 
-
-
-
-
 </ul>
-
 
 
 </div>
@@ -468,10 +422,7 @@ Rp100.000
 
 
 
-
-
 <div class="section">
-
 
 
 <h3>
@@ -482,10 +433,7 @@ Rp100.000
 
 
 
-
-
 <ul>
-
 
 
 <li>
@@ -495,15 +443,11 @@ Order minimal 100 Star.
 </li>
 
 
-
-
 <li>
 
 Teman juga order 100 Star.
 
 </li>
-
-
 
 
 <li>
@@ -513,9 +457,7 @@ Teman juga order 100 Star.
 </li>
 
 
-
 </ul>
-
 
 
 </div>
@@ -525,9 +467,7 @@ Teman juga order 100 Star.
 
 
 
-
-<div class="vip" onclick="checkout('Paket VIP 14 Hari','300000')">
-
+<div class="vip" onclick="checkout('Paket VIP 14 Hari',300000)">
 
 
 <h3>
@@ -537,17 +477,11 @@ Teman juga order 100 Star.
 </h3>
 
 
-
-
-
 <p>
 
 ⭐ Target 25 Star / Hari
 
 </p>
-
-
-
 
 
 <p>
@@ -558,17 +492,11 @@ Teman juga order 100 Star.
 
 
 
-
-
-
 <div class="vip-price">
 
 Rp300.000
 
 </div>
-
-
-
 
 
 
@@ -585,8 +513,6 @@ Rp300.000
 
 
 
-
-
 <p style="margin-top:15px;font-weight:700;">
 
 👆 Klik untuk Order VIP
@@ -596,6 +522,11 @@ Rp300.000
 
 
 </div>
+
+
+
+
+
 <div class="section">
 
 
@@ -606,14 +537,12 @@ Rp300.000
 </h3>
 
 
-
 <p>
 
 Apabila akun tidak dimainkan lebih dari 12 jam,
 target hari tersebut dianggap selesai.
 
 </p>
-
 
 
 </div>
@@ -633,9 +562,7 @@ target hari tersebut dianggap selesai.
 <!-- POPUP CHECKOUT -->
 
 
-
 <div class="popup" id="popup">
-
 
 
 <div class="popup-box">
@@ -654,10 +581,7 @@ target hari tersebut dianggap selesai.
 <p id="namaOrder"></p>
 
 
-
-
 <h2 id="hargaOrder"></h2>
-
 
 
 
@@ -683,13 +607,12 @@ DANA / QRIS
 <br><br>
 
 
-
 Nomor DANA:
 
 <br>
 
 
-<b>
+<b id="nomorDana">
 
 081310575077
 
@@ -697,9 +620,15 @@ Nomor DANA:
 
 
 
+<button class="copy-btn" onclick="copyDana()">
+
+📋 Salin Nomor DANA
+
+</button>
+
+
 
 <br><br>
-
 
 
 
@@ -716,6 +645,44 @@ Fatan Trilaksono
 
 
 
+</div>
+<div class="input-group">
+
+
+<label>
+
+🎮 Nickname Free Fire
+
+</label>
+
+
+<input
+
+type="text"
+
+id="nickname"
+
+placeholder="Masukkan nickname FF">
+
+
+
+
+
+<label>
+
+🆔 UID Free Fire
+
+</label>
+
+
+<input
+
+type="number"
+
+id="uid"
+
+placeholder="Masukkan UID FF">
+
 
 </div>
 
@@ -723,13 +690,9 @@ Fatan Trilaksono
 
 
 
-
-
-<a id="waBtn" class="pay-btn" target="_blank">
-
+<a id="waBtn" class="pay-btn" onclick="kirimWA()">
 
 ✅ Konfirmasi Order via WhatsApp
-
 
 </a>
 
@@ -737,21 +700,11 @@ Fatan Trilaksono
 
 
 
-
-
 <div class="close" onclick="tutup()">
-
-
 
 Tutup
 
-
-
 </div>
-
-
-
-
 
 
 </div>
@@ -766,9 +719,7 @@ Tutup
 
 <footer>
 
-
 © 2026 CS Boost • Fast • Safe • Trusted
-
 
 </footer>
 
@@ -776,7 +727,16 @@ Tutup
 
 
 
+
 <script>
+
+
+let namaPesanan = "";
+
+let hargaPesanan = "";
+
+
+
 
 
 function customStar(){
@@ -788,7 +748,7 @@ let star = prompt("Masukkan jumlah Star (Minimal 12⭐ - Maksimal 200⭐)");
 
 if(star === null){
 
-    return;
+return;
 
 }
 
@@ -796,11 +756,12 @@ if(star === null){
 
 if(star.trim() === ""){
 
-    alert("Jumlah Star belum diisi.");
+alert("Jumlah Star belum diisi.");
 
-    return;
+return;
 
 }
+
 
 
 
@@ -814,11 +775,12 @@ star = Number(star);
 if(!Number.isInteger(star)){
 
 
-    alert("Masukkan angka saja.");
+alert("Masukkan angka saja.");
 
-    return;
+return;
 
 }
+
 
 
 
@@ -826,9 +788,9 @@ if(!Number.isInteger(star)){
 if(star < 12){
 
 
-    alert("Minimal order 12 Star.");
+alert("Minimal order 12 Star.");
 
-    return;
+return;
 
 }
 
@@ -839,36 +801,36 @@ if(star < 12){
 if(star > 200){
 
 
-    alert("Maksimal order 200 Star.");
+alert("Maksimal order 200 Star.");
 
-    return;
+return;
 
 }
 
 
 
 
-
-// Custom Bintang
-// Harga tetap Rp1.500 / Star
 
 let harga = star * 1500;
 
 
 
-checkout(star + " Star", harga);
+checkout(star + " Star",harga);
 
 
 
 }
-
-
 
 
 
 
 
 function checkout(nama,harga){
+
+
+namaPesanan = nama;
+
+hargaPesanan = harga;
 
 
 
@@ -894,32 +856,25 @@ document.getElementById("hargaOrder").innerHTML =
 
 
 
+document.getElementById("nickname").value="";
 
-let pesan =
-
-"Halo CS Boost 👋\n\n" +
-
-"Saya ingin konfirmasi order.\n\n" +
-
-"Pesanan: ⭐ " + nama +
-
-"\nTotal: Rp " +
-
-Number(harga).toLocaleString("id-ID") +
-
-"\n\nMohon dicek dan diproses. Terima kasih.";
+document.getElementById("uid").value="";
 
 
 
+}
+function copyDana(){
+
+
+let dana = document.getElementById("nomorDana").innerText;
 
 
 
-document.getElementById("waBtn").href =
+navigator.clipboard.writeText(dana);
 
-"https://wa.me/6283824959777?text=" +
 
-encodeURIComponent(pesan);
 
+alert("Nomor DANA berhasil disalin!");
 
 
 
@@ -930,6 +885,148 @@ encodeURIComponent(pesan);
 
 
 
+
+function kirimWA(){
+
+
+
+let nickname = document.getElementById("nickname").value.trim();
+
+
+let uid = document.getElementById("uid").value.trim();
+
+
+
+
+
+if(nickname === ""){
+
+
+alert("Silakan isi Nickname Free Fire terlebih dahulu.");
+
+return;
+
+
+}
+
+
+
+
+
+if(uid === ""){
+
+
+alert("Silakan isi UID Free Fire terlebih dahulu.");
+
+return;
+
+
+}
+
+
+
+
+
+if(uid.length < 8){
+
+
+alert("UID Free Fire minimal 8 angka.");
+
+return;
+
+
+}
+
+
+
+
+
+
+let sekarang = new Date();
+
+
+
+let tanggal = sekarang.toLocaleDateString("id-ID");
+
+
+let jam = sekarang.toLocaleTimeString("id-ID");
+
+
+
+
+
+
+
+let kodeOrder =
+
+"CSB-" + Math.floor(100000 + Math.random() * 900000);
+
+
+
+
+
+
+
+
+let pesan =
+
+
+"Halo CS Boost 👋\n\n" +
+
+"Saya ingin konfirmasi order.\n\n" +
+
+"🎫 Kode Order : " + kodeOrder +
+
+"\n\n📦 Pesanan : ⭐ " + namaPesanan +
+
+"\n💰 Total : Rp " +
+
+Number(hargaPesanan).toLocaleString("id-ID") +
+
+"\n\n🎮 Nickname FF : " + nickname +
+
+"\n🆔 UID FF : " + uid +
+
+"\n\n📅 Tanggal : " + tanggal +
+
+"\n⏰ Jam : " + jam +
+
+"\n\nMohon dicek dan diproses. Terima kasih 🙏";
+
+
+
+
+
+
+
+let nomorWhatsApp = "6283824959777";
+
+
+
+
+
+
+
+window.open(
+
+
+"https://wa.me/" +
+
+nomorWhatsApp +
+
+"?text=" +
+
+encodeURIComponent(pesan),
+
+
+"_blank"
+
+
+);
+
+
+
+}
 
 
 function tutup(){
@@ -942,11 +1039,83 @@ document.getElementById("popup").style.display="none";
 
 
 
+
+
+
+
+// Klik area luar popup untuk menutup
+
+window.onclick = function(event){
+
+
+let popup = document.getElementById("popup");
+
+
+
+if(event.target == popup){
+
+
+popup.style.display="none";
+
+
+}
+
+
+}
+
+
+
+
+
+
+
+// UID hanya boleh angka
+
+document.getElementById("uid").addEventListener("input", function(){
+
+
+this.value = this.value.replace(/[^0-9]/g,'');
+
+
+});
+
+
+
+
+
+
+
+// Tombol WhatsApp cek data sebelum kirim
+
+document.getElementById("waBtn").addEventListener("click", function(e){
+
+
+let nickname = document.getElementById("nickname").value.trim();
+
+
+let uid = document.getElementById("uid").value.trim();
+
+
+
+
+if(nickname === "" || uid === ""){
+
+
+e.preventDefault();
+
+
+return;
+
+
+}
+
+
+});
+
 </script>
 
 
-
-
 </body>
+
 
 </html>
