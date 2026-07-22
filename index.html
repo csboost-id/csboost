@@ -1,1121 +1,130 @@
-<!DOCTYPE html>
-<html lang="id">
-
-<head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>CS Boost | Joki Class Squad Free Fire</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-
-<style>
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-
-body{
-
-    background:#0d0d0d;
-    color:#fff;
-    font-family:'Poppins',sans-serif;
-
-}
-
-
-.container{
-
-    width:90%;
-    max-width:900px;
-    margin:auto;
-    padding:40px 0;
-
-}
-
-
-.hero{
-
-    text-align:center;
-    margin-bottom:40px;
-
-}
-
-
-.badge{
-
-    display:inline-block;
-    background:#ff9900;
-    color:#000;
-    padding:8px 18px;
-    border-radius:50px;
-    font-weight:600;
-    margin-bottom:18px;
-
-}
-
-
-.hero h1{
-
-    font-size:50px;
-    color:#ff9900;
-
-}
-
-
-.hero p{
-
-    color:#ccc;
-
-}
-
-
-
-.card{
-
-    background:#171717;
-    border:1px solid #2f2f2f;
-    border-radius:18px;
-    padding:28px;
-
-}
-
-
-.card h2{
-
-    color:#ff9900;
-    text-align:center;
-    margin-bottom:25px;
-
-}
-
-
-.section{
-
-    margin-bottom:25px;
-
-}
-
-
-.section h3{
-
-    margin-bottom:10px;
-
-}
-
-
-.price-list li{
-
-    list-style:none;
-    background:#222;
-    padding:15px;
-    border-radius:12px;
-    margin:10px 0;
-    cursor:pointer;
-    transition:.3s;
-
-}
-
-
-.price-list li:hover{
-
-    background:#ff9900;
-    color:#000;
-    transform:scale(1.03);
-
-}
-
-
-.disabled-price{
-
-    cursor:not-allowed!important;
-    opacity:.6;
-
-}
-
-
-.disabled-price:hover{
-
-    background:#222!important;
-    color:#fff!important;
-    transform:none!important;
-
-}
-
-
-.price{
-
-    color:#ffd54a;
-    font-weight:700;
-
-}
-
-
-.vip{
-
-    margin:25px 0;
-    background:linear-gradient(135deg,#ff9900,#ffb84d);
-    border-radius:15px;
-    padding:20px;
-    text-align:center;
-    color:#111;
-
-}
-
-
-.vip-price{
-
-    font-size:34px;
-    font-weight:700;
-    color:white;
-
-}
-
-
-.popup{
-
-    display:none;
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,.8);
-    justify-content:center;
-    align-items:center;
-    z-index:999;
-
-}
-
-
-.popup-box{
-
-    background:#171717;
-    padding:30px;
-    border-radius:20px;
-    width:90%;
-    max-width:420px;
-    text-align:center;
-    border:2px solid #ff9900;
-    max-height:90vh;
-    overflow-y:auto;
-
-}
-
-
-.popup-box h2{
-
-    color:#ff9900;
-
-}
-
-
-.payment{
-
-    background:#222;
-    padding:15px;
-    border-radius:12px;
-    margin:20px 0;
-
-}
-
-
-.copy-btn{
-
-    width:100%;
-    margin-top:12px;
-    padding:12px;
-    border:none;
-    border-radius:50px;
-    background:#ff9900;
-    color:#111;
-    font-weight:bold;
-    cursor:pointer;
-
-}
-
-
-.input-group{
-
-    text-align:left;
-    margin-top:20px;
-
-}
-
-
-.input-group label{
-
-    display:block;
-    margin-bottom:6px;
-    color:#ddd;
-
-}
-
-
-.input-group input{
-
-    width:100%;
-    padding:13px;
-    border:none;
-    outline:none;
-    border-radius:12px;
-    background:#252525;
-    color:white;
-    margin-bottom:15px;
-
-}
-
-
-.pay-btn{
-
-    display:block;
-    background:#25D366;
-    padding:14px;
-    border-radius:50px;
-    color:white;
-    text-decoration:none;
-    font-weight:bold;
-    margin-top:10px;
-    cursor:pointer;
-
-}
-
-
-.close{
-
-    margin-top:15px;
-    color:#aaa;
-    cursor:pointer;
-
-}
-
-
-footer{
-
-    text-align:center;
-    padding:30px;
-    color:#888;
-
-}
-
+<!doctype html>
+<html lang="id"><head><script>window["__codeletBootstrap__"]=JSON.parse('{"A":"A","B":"20260722-05-f3252b3"}');</script><script src="/_sdk/e358eac22bd01364.telemetry_sdk.js" integrity="sha512-KPxp3rw4K8Nu9ceWJc3gyM7srgaZxiFWOVbyu260EYzzAqdz10mfo5xyXrCx+wEKtGo77JbtmwXvFLbwrGzwvw=="></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CS Boost | Joki Class Squad Free Fire</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&amp;display=swap" rel="stylesheet">
+  <style>
+body{font-family:'Poppins',sans-serif}
+.price-item{transition:.3s}
+.price-item:hover{background:#ff9900;color:#000;transform:scale(1.03)}
+.disabled-price{cursor:not-allowed!important;opacity:.6}
+.disabled-price:hover{background:#222!important;color:#fff!important;transform:none!important}
 </style>
-
-</head>
-
-
-<body>
-
-
-<div class="container">
-
-
-<div class="hero">
-
-
-<div class="badge">
-
-🔥 Trusted Joki Free Fire
-
-</div>
-
-
-<h1>
-
-CS Boost
-
-</h1>
-
-
-<p>
-
-Push Rank Class Squad dengan cepat, aman, dan terpercaya.
-
-</p>
-
-
-</div>
-
-
-<div class="card">
-
-
-<h2>
-
-⭐ Jasa Joki Free Fire ⭐
-
-</h2>
-<div class="section">
-
-<h3>
-
-📌 Daftar Harga
-
-</h3>
-
-
-<ul class="price-list">
-
-
-<li class="disabled-price">
-
-⭐ Per Star =
-
-<span class="price">
-
-Rp1.500
-
-</span>
-
-</li>
-
-
-
-<li onclick="customStar()">
-
-⭐ Custom Bintang =
-
-<span class="price">
-
-Rp1.500 / ⭐ (Min. 12⭐ - Max. 200⭐)
-
-</span>
-
-</li>
-
-
-
-<li onclick="checkout('60 Star',78000)">
-
-⭐ 60 Star =
-
-<span class="price">
-
-Rp78.000
-
-</span>
-
-</li>
-
-
-
-<li onclick="checkout('100 Star',100000)">
-
-⭐ 100 Star =
-
-<span class="price">
-
-Rp100.000
-
-</span>
-
-</li>
-
-
-</ul>
-
-
-</div>
-
-
-
-
-
-<div class="section">
-
-
-<h3>
-
-👥 Promo Duo Squad
-
-</h3>
-
-
-
-<ul>
-
-
-<li>
-
-Order minimal 100 Star.
-
-</li>
-
-
-<li>
-
-Teman juga order 100 Star.
-
-</li>
-
-
-<li>
-
-🎁 Bonus masing-masing +10 Star.
-
-</li>
-
-
-</ul>
-
-
-</div>
-
-
-
-
-
-
-<div class="vip" onclick="checkout('Paket VIP 14 Hari',300000)">
-
-
-<h3>
-
-💎 Paket VIP 14 Hari
-
-</h3>
-
-
-<p>
-
-⭐ Target 25 Star / Hari
-
-</p>
-
-
-<p>
-
-⭐ Total 350 Star
-
-</p>
-
-
-
-<div class="vip-price">
-
-Rp300.000
-
-</div>
-
-
-
-<p>
-
-🎁 Prioritas pengerjaan
-
-<br>
-
-🎁 Monitoring progress
-
-</p>
-
-
-
-
-<p style="margin-top:15px;font-weight:700;">
-
-👆 Klik untuk Order VIP
-
-</p>
-
-
-
-</div>
-
-
-
-
-
-<div class="section">
-
-
-<h3>
-
-📝 Catatan
-
-</h3>
-
-
-<p>
-
-Apabila akun tidak dimainkan lebih dari 12 jam,
-target hari tersebut dianggap selesai.
-
-</p>
-
-
-</div>
-
-
-
-</div>
-
-
-</div>
-
-
-
-
-
-
-<!-- POPUP CHECKOUT -->
-
-
-<div class="popup" id="popup">
-
-
-<div class="popup-box">
-
-
-
-<h2>
-
-💳 Checkout
-
-</h2>
-
-
-
-
-<p id="namaOrder"></p>
-
-
-<h2 id="hargaOrder"></h2>
-
-
-
-
-
-
-<div class="payment">
-
-
-Bayar melalui:
-
-<br><br>
-
-
-<b style="color:#00e5ff;">
-
-DANA / QRIS
-
-</b>
-
-
-
-<br><br>
-
-
-Nomor DANA:
-
-<br>
-
-
-<b id="nomorDana">
-
-081310575077
-
-</b>
-
-
-
-<button class="copy-btn" onclick="copyDana()">
-
-📋 Salin Nomor DANA
-
-</button>
-
-
-
-<br><br>
-
-
-
-Atas Nama:
-
-<br>
-
-
-<b>
-
-Fatan Trilaksono
-
-</b>
-
-
-
-</div>
-<div class="input-group">
-
-
-<label>
-
-🎮 Nickname Free Fire
-
-</label>
-
-
-<input
-
-type="text"
-
-id="nickname"
-
-placeholder="Masukkan nickname FF">
-
-
-
-
-
-<label>
-
-🆔 UID Free Fire
-
-</label>
-
-
-<input
-
-type="number"
-
-id="uid"
-
-placeholder="Masukkan UID FF">
-
-
-</div>
-
-
-
-
-
-<a id="waBtn" class="pay-btn" onclick="kirimWA()">
-
-✅ Konfirmasi Order via WhatsApp
-
-</a>
-
-
-
-
-
-<div class="close" onclick="tutup()">
-
-Tutup
-
-</div>
-
-
-</div>
-
-
-</div>
-
-
-
-
-
-
-<footer>
-
-© 2026 CS Boost • Fast • Safe • Trusted
-
-</footer>
-
-
-
-
-
-
-<script>
-
-
-let namaPesanan = "";
-
-let hargaPesanan = "";
-
-
-
-
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js" type="text/javascript"></script>
+  <script src="/_sdk/935a53bc2e11fb8d.data_sdk.js" type="text/javascript" integrity="sha512-qr2oyPnEys1WebcOABaRh6hG77r5PWpqeWW6JTKbRJqly/INsfBi31CVNlTmHqjgeLpkVmmHZJUdxSx/32tOFQ=="></script>
+  <script src="/_sdk/7831c9b82769a23f.resizing_sdk.js" type="text/javascript" integrity="sha512-8T/qhF3yB5dtqHof6yvY2492zFsme1nYV1+FuXfYvPz63uo2L30fnKiOabmH0Sl3qhplMLgxjytDR8IvycRwKQ=="></script>
+ </head>
+ <body data-template-id="__page-root" class="min-h-screen" style="background: rgb(13, 13, 13);">
+  <div class="w-full max-w-[900px] mx-auto px-[5%] py-10">
+   <header class="text-center mb-10"><span data-template-id="badge" class="canva-tag inline-block px-5 py-2 rounded-full font-semibold mb-4" style="background: rgb(255, 153, 0); color: rgb(0, 0, 0); font-weight: 600; font-style: normal; font-size: 16px;">🔥 Trusted Joki Free Fire</span>
+    <h1 data-template-id="hero-title" class="canva-text text-5xl font-bold" style="color: rgb(255, 153, 0); font-weight: 700; font-style: normal; font-size: 32px;">CS Boost</h1>
+    <p data-template-id="hero-subtitle" class="canva-text mt-2" style="color: rgb(204, 204, 204); font-weight: 400; font-style: normal; font-size: 16px;">Push Rank Class Squad dengan cepat, aman, dan terpercaya.</p>
+   </header>
+   <main data-template-id="main-card" class="canva-card rounded-2xl p-7 border border-[#2f2f2f]" style="background: rgb(23, 23, 23);">
+    <h2 data-template-id="card-heading" class="canva-text text-center mb-6 text-xl font-semibold" style="color: rgb(255, 153, 0); font-weight: 600; font-style: normal; font-size: 24px;">⭐ Jasa Joki Free Fire ⭐</h2>
+    <section class="mb-6">
+     <h3 data-template-id="price-heading" class="canva-text font-semibold mb-3" style="color: rgb(255, 255, 255); font-weight: 600; font-style: normal; font-size: 19px;">📌 Daftar Harga</h3>
+     <ul class="space-y-3">
+      <li class="disabled-price bg-[#222] p-4 rounded-xl"><span data-template-id="price-perstar" class="canva-text" style="color: rgb(255, 213, 74); font-weight: 400; font-style: normal; font-size: 16px;">⭐ Per Star = Rp1.500</span></li>
+      <li class="price-item bg-[#222] p-4 rounded-xl cursor-pointer" onclick="customStar()"><span data-template-id="price-custom" class="canva-text" style="color: rgb(255, 213, 74); font-weight: 400; font-style: normal; font-size: 16px;">⭐ Custom Bintang = Rp1.500 / ⭐ (Min. 12⭐ - Max. 200⭐)</span></li>
+      <li class="price-item bg-[#222] p-4 rounded-xl cursor-pointer" onclick="checkout('60 Star',78000)"><span data-template-id="price-60" class="canva-text" style="color: rgb(255, 213, 74); font-weight: 400; font-style: normal; font-size: 16px;">⭐ 60 Star = Rp78.000</span></li>
+      <li class="price-item bg-[#222] p-4 rounded-xl cursor-pointer" onclick="checkout('100 Star',100000)"><span data-template-id="price-100" class="canva-text" style="color: rgb(255, 213, 74); font-weight: 400; font-style: normal; font-size: 16px;">⭐ 100 Star = Rp100.000</span></li>
+     </ul>
+    </section>
+    <section class="mb-6">
+     <h3 data-template-id="promo-heading" class="canva-text font-semibold mb-2" style="color: rgb(255, 255, 255); font-weight: 600; font-style: normal; font-size: 19px;">👥 Promo Duo Squad</h3>
+     <ul class="list-disc list-inside space-y-1 text-gray-300 text-sm">
+      <li>Order minimal 100 Star.</li>
+      <li>Teman juga order 100 Star.</li>
+      <li>🎁 Bonus masing-masing +10 Star.</li>
+     </ul>
+    </section>
+    <div data-template-id="vip-card" class="canva-card rounded-2xl p-5 text-center cursor-pointer mb-6" onclick="checkout('Paket VIP 14 Hari',300000)" style="background: linear-gradient(135deg, rgb(255, 153, 0), rgb(255, 184, 77));">
+     <h3 data-template-id="vip-title" class="canva-text font-bold text-lg" style="color: rgb(17, 17, 17); font-weight: 700; font-style: normal; font-size: 19px;">💎 Paket VIP 14 Hari</h3>
+     <p class="text-sm mt-1">⭐ Target 25 Star / Hari</p>
+     <p class="text-sm">⭐ Total 350 Star</p>
+     <p data-template-id="vip-price" class="canva-text text-4xl font-bold text-white my-2" style="color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">Rp300.000</p>
+     <p class="text-sm">🎁 Prioritas pengerjaan<br>
+      🎁 Monitoring progress</p>
+     <p class="mt-3 font-bold text-sm">👆 Klik untuk Order VIP</p>
+    </div>
+    <section>
+     <h3 data-template-id="note-heading" class="canva-text font-semibold mb-2" style="color: rgb(255, 255, 255); font-weight: 600; font-style: normal; font-size: 19px;">📝 Catatan</h3>
+     <p data-template-id="note-text" class="canva-text text-sm" style="color: rgb(204, 204, 204); font-weight: 400; font-style: normal; font-size: 16px;">Apabila akun tidak dimainkan lebih dari 12 jam, target hari tersebut dianggap selesai.</p>
+    </section>
+   </main>
+  </div><!-- POPUP -->
+  <div class="hidden fixed inset-0 bg-black/80 justify-center items-center z-50" id="popup">
+   <div data-template-id="popup-box" class="canva-panel rounded-2xl p-7 w-[90%] max-w-[420px] text-center border-2 border-[#ff9900] max-h-[90vh] overflow-y-auto" style="background: rgb(23, 23, 23);">
+    <h2 data-template-id="popup-title" class="canva-text text-xl font-semibold mb-2" style="color: rgb(255, 153, 0); font-weight: 600; font-style: normal; font-size: 24px;">💳 Checkout</h2>
+    <p id="namaOrder" class="text-sm"></p>
+    <p id="hargaOrder" class="text-2xl font-bold text-[#ff9900] my-2"></p>
+    <div class="bg-[#222] p-4 rounded-xl my-4 text-sm">
+     <p>Bayar melalui:</p>
+     <p class="text-[#00e5ff] font-bold mt-2">DANA / QRIS</p>
+     <p class="mt-3">Nomor DANA:</p>
+     <p class="font-bold" id="nomorDana">081310575077</p><button onclick="copyDana()" class="w-full mt-3 py-3 rounded-full bg-[#ff9900] text-black font-bold">📋 Salin Nomor DANA</button>
+     <p class="mt-3">Atas Nama: <b>Fatan Trilaksono</b></p>
+    </div>
+    <div class="text-left mt-4"><label data-template-id="uid-label" for="uid" class="canva-text block mb-1 text-sm" style="color: rgb(221, 221, 221); font-weight: 400; font-style: normal; font-size: 16px;">🆔 UID Free Fire</label> <input type="number" id="uid" placeholder="Masukkan UID FF" class="w-full p-3 rounded-xl bg-[#252525] text-white outline-none">
+    </div><button data-template-id="wa-btn" class="canva-button w-full mt-4 py-3 rounded-full font-bold" onclick="kirimWA()" style="background: rgb(37, 211, 102); color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">✅ Konfirmasi Order via WhatsApp</button>
+    <p class="mt-4 text-gray-400 cursor-pointer text-sm" onclick="tutup()">Tutup</p>
+   </div>
+  </div>
+  <footer class="text-center py-8">
+   <p data-template-id="footer-text" class="canva-text text-sm" style="color: rgb(136, 136, 136); font-weight: 400; font-style: normal; font-size: 16px;">© 2026 CS Boost • Fast • Safe • Trusted</p>
+  </footer>
+  <script src="/_sdk/47669dc8496955be.editing_sdk.js" integrity="sha512-SXgqvNdy3CX4R90Kr2d0cSNYZOv6KbcxTq/tprZCtYPHhvtgc5Aagp95xl8W/LNBFpixAlLGqjQW133qbh1QAg=="></script>
+  <script>
+let namaPesanan="",hargaPesanan="";
 
 function customStar(){
-
-
-let star = prompt("Masukkan jumlah Star (Minimal 12⭐ - Maksimal 200⭐)");
-
-
-
-if(star === null){
-
-return;
-
+let star=prompt("Masukkan jumlah Star (Min 12 - Max 200)");
+if(star===null)return;
+if(star.trim()===""){alert("Jumlah Star belum diisi.");return}
+star=Number(star);
+if(!Number.isInteger(star)){alert("Masukkan angka saja.");return}
+if(star<12){alert("Minimal order 12 Star.");return}
+if(star>200){alert("Maksimal order 200 Star.");return}
+checkout(star+" Star",star*1500);
 }
-
-
-
-if(star.trim() === ""){
-
-alert("Jumlah Star belum diisi.");
-
-return;
-
-}
-
-
-
-
-
-star = Number(star);
-
-
-
-
-
-if(!Number.isInteger(star)){
-
-
-alert("Masukkan angka saja.");
-
-return;
-
-}
-
-
-
-
-
-if(star < 12){
-
-
-alert("Minimal order 12 Star.");
-
-return;
-
-}
-
-
-
-
-
-if(star > 200){
-
-
-alert("Maksimal order 200 Star.");
-
-return;
-
-}
-
-
-
-
-
-let harga = star * 1500;
-
-
-
-checkout(star + " Star",harga);
-
-
-
-}
-
-
-
-
 
 function checkout(nama,harga){
-
-
-namaPesanan = nama;
-
-hargaPesanan = harga;
-
-
-
-document.getElementById("popup").style.display="flex";
-
-
-
-
-
-document.getElementById("namaOrder").innerHTML =
-
-"Pesanan: ⭐ " + nama;
-
-
-
-
-
-document.getElementById("hargaOrder").innerHTML =
-
-"Rp " + Number(harga).toLocaleString("id-ID");
-
-
-
-
-
-document.getElementById("nickname").value="";
-
+namaPesanan=nama;hargaPesanan=harga;
+const p=document.getElementById("popup");
+p.classList.remove("hidden");p.classList.add("flex");
+document.getElementById("namaOrder").innerHTML="Pesanan: ⭐ "+nama;
+document.getElementById("hargaOrder").innerHTML="Rp "+Number(harga).toLocaleString("id-ID");
 document.getElementById("uid").value="";
-
-
-
 }
+
 function copyDana(){
-
-
-let dana = document.getElementById("nomorDana").innerText;
-
-
-
-navigator.clipboard.writeText(dana);
-
-
-
-alert("Nomor DANA berhasil disalin!");
-
-
-
+navigator.clipboard.writeText(document.getElementById("nomorDana").innerText);
+const btn=event.target;btn.textContent="✅ Tersalin!";setTimeout(()=>btn.textContent="📋 Salin Nomor DANA",2000);
 }
-
-
-
-
-
-
 
 function kirimWA(){
-
-
-
-let nickname = document.getElementById("nickname").value.trim();
-
-
-let uid = document.getElementById("uid").value.trim();
-
-
-
-
-
-if(nickname === ""){
-
-
-alert("Silakan isi Nickname Free Fire terlebih dahulu.");
-
-return;
-
-
-}
-
-
-
-
-
-if(uid === ""){
-
-
-alert("Silakan isi UID Free Fire terlebih dahulu.");
-
-return;
-
-
-}
-
-
-
-
-
-if(uid.length < 8){
-
-
-alert("UID Free Fire minimal 8 angka.");
-
-return;
-
-
-}
-
-
-
-
-
-
-let sekarang = new Date();
-
-
-
-let tanggal = sekarang.toLocaleDateString("id-ID");
-
-
-let jam = sekarang.toLocaleTimeString("id-ID");
-
-
-
-
-
-
-
-let kodeOrder =
-
-"CSB-" + Math.floor(100000 + Math.random() * 900000);
-
-
-
-
-
-
-
-
-let pesan =
-
-
-"Halo CS Boost 👋\n\n" +
-
-"Saya ingin konfirmasi order.\n\n" +
-
-"🎫 Kode Order : " + kodeOrder +
-
-"\n\n📦 Pesanan : ⭐ " + namaPesanan +
-
-"\n💰 Total : Rp " +
-
-Number(hargaPesanan).toLocaleString("id-ID") +
-
-"\n\n🎮 Nickname FF : " + nickname +
-
-"\n🆔 UID FF : " + uid +
-
-"\n\n📅 Tanggal : " + tanggal +
-
-"\n⏰ Jam : " + jam +
-
+let uid=document.getElementById("uid").value.trim();
+if(uid===""){alert("Silakan isi UID Free Fire terlebih dahulu.");return}
+if(uid.length<8){alert("UID Free Fire minimal 8 angka.");return}
+let s=new Date(),tanggal=s.toLocaleDateString("id-ID"),jam=s.toLocaleTimeString("id-ID");
+let kode="CSB-"+Math.floor(100000+Math.random()*900000);
+let pesan="Halo CS Boost 👋\n\nSaya ingin konfirmasi order.\n\n"+
+"🎫 Kode Order : "+kode+
+"\n\n📦 Pesanan : ⭐ "+namaPesanan+
+"\n💰 Total : Rp "+Number(hargaPesanan).toLocaleString("id-ID")+
+"\n\n🆔 UID FF : "+uid+
+"\n\n📅 Tanggal : "+tanggal+
+"\n⏰ Jam : "+jam+
 "\n\nMohon dicek dan diproses. Terima kasih 🙏";
-
-
-
-
-
-
-
-let nomorWhatsApp = "6283824959777";
-
-
-
-
-
-
-
-window.open(
-
-
-"https://wa.me/" +
-
-nomorWhatsApp +
-
-"?text=" +
-
-encodeURIComponent(pesan),
-
-
-"_blank"
-
-
-);
-
-
-
+window.open("https://wa.me/6283824959777?text="+encodeURIComponent(pesan),"_blank");
 }
 
-
-function tutup(){
-
-
-document.getElementById("popup").style.display="none";
-
-
-}
-
-
-
-
-
-
-
-// Klik area luar popup untuk menutup
-
-window.onclick = function(event){
-
-
-let popup = document.getElementById("popup");
-
-
-
-if(event.target == popup){
-
-
-popup.style.display="none";
-
-
-}
-
-
-}
-
-
-
-
-
-
-
-// UID hanya boleh angka
-
-document.getElementById("uid").addEventListener("input", function(){
-
-
-this.value = this.value.replace(/[^0-9]/g,'');
-
-
-});
-
-
-
-
-
-
-
-// Tombol WhatsApp cek data sebelum kirim
-
-document.getElementById("waBtn").addEventListener("click", function(e){
-
-
-let nickname = document.getElementById("nickname").value.trim();
-
-
-let uid = document.getElementById("uid").value.trim();
-
-
-
-
-if(nickname === "" || uid === ""){
-
-
-e.preventDefault();
-
-
-return;
-
-
-}
-
-
-});
-
+function tutup(){const p=document.getElementById("popup");p.classList.add("hidden");p.classList.remove("flex")}
+window.onclick=function(e){const p=document.getElementById("popup");if(e.target===p)tutup()}
+document.getElementById("uid").addEventListener("input",function(){this.value=this.value.replace(/[^0-9]/g,'')});
 </script>
-
-
-</body>
-
-
-</html>
+ 
+</body></html>
