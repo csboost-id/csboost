@@ -496,10 +496,16 @@ const kode = "CSB-" + Math.floor(100000 + Math.random()*900000);
     "\n\nMohon dicek dan diproses. Terima kasih 🙏";
 
 
-    window.open(
+    const wa = window.open(
     "https://wa.me/6283824959777?text=" + encodeURIComponent(pesan),
     "_blank"
 );
+
+if(!wa){
+    alert("WhatsApp gagal dibuka. Izinkan popup browser.");
+    sedangMengirim = false;
+    return;
+}
 
 // simpan waktu order untuk anti spam
 waktuOrderTerakhir = Date.now();
