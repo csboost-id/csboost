@@ -317,7 +317,8 @@ checkout(val + " Star", val * 1500);
 
 function checkout(nama, harga) {
 
-    if(!nama || !harga){
+    if(!nama || harga === undefined || harga === null){
+
         alert("Order tidak valid.");
         return;
     }
@@ -352,11 +353,22 @@ function showDana(){
 
 function copyDana(){
 
-    navigator.clipboard.writeText("081310575077");
+    const nomor = "081310575077";
 
-    alert("Nomor DANA berhasil disalin");
+    navigator.clipboard.writeText(nomor)
+    .then(() => {
+
+        alert("Nomor DANA berhasil disalin");
+
+    })
+    .catch(() => {
+
+        alert("Gagal menyalin nomor DANA");
+
+    });
 
 }
+
 
 
 
