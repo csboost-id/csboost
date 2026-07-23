@@ -270,6 +270,9 @@ Atas Nama: <b class="text-white">Fatan Trilaksono</b>
   <script>
     let namaPesanan = "", hargaPesanan = "";
 
+let sedangMengirim = false;
+let waktuOrderTerakhir = 0;
+
     let customMin = 12;
 let customMax = 200;
 
@@ -430,13 +433,17 @@ function copyDana(){
 
 
 function kirimWA() {
+  const sekarang = Date.now();
 
-    if(namaPesanan === "" || hargaPesanan === "")
-{
-        alert("Silakan pilih paket terlebih dahulu.");
-        return;
-    }
+if (sekarang - waktuOrderTerakhir < 5000) {
+    alert("⏳ Tunggu 5 detik sebelum mengirim order lagi.");
+    return;
+}
 
+    if(namaPesanan === "" || hargaPesanan === "") {
+    alert("Silakan pilih paket terlebih dahulu.");
+    return;
+}
 
     const uid = document.getElementById("uid").value.trim();
 
@@ -484,6 +491,8 @@ if(uid.length > 20){
     "https://wa.me/6283824959777?text="+encodeURIComponent(pesan),
     "_blank"
     );
+
+waktuOrderTerakhir = Date.now();
 
 }
 
