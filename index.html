@@ -178,7 +178,7 @@ style="color: rgb(165,180,252);">
        </li>
 
        <li>
-        ⚠️ Akun tidak boleh menggunakan nomor telepon atau keamanan tambahan.
+        ⚠️ Pastikan akun dapat diakses dan tidak terkunci.
        </li>
 
        <li>
@@ -692,9 +692,28 @@ function cekPromoSeason(){
 
 
 cekPromoSeason();
+function tukarGoogle(){
+
+    const pesan =
+    "Halo CS Boost 👋\n\n"+
+    "Saya ingin melakukan penukaran akun Google dengan STAR.\n\n"+
+    "📩 Jumlah Akun : 10 akun Google\n"+
+    "⭐ Reward : 11 STAR\n\n"+
+    "Akun Google siap untuk dicek.\n"+
+    "Mohon dicek dan diproses sesuai ketentuan.\n\n"+
+    "Terima kasih 🙏";
+
+
+    window.open(
+        "https://wa.me/6283824959777?text=" + encodeURIComponent(pesan),
+        "_blank"
+    );
+
+}
 
 
 lucide.createIcons();
+
 
 </script>
 </body>
