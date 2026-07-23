@@ -1,267 +1,155 @@
-<!doctype html>
-<html lang="id"><head><script>window["__codeletBootstrap__"]=JSON.parse('{"A":"A","B":"20260722-05-f3252b3"}');</script><script src="/_sdk/e358eac22bd01364.telemetry_sdk.js" integrity="sha512-KPxp3rw4K8Nu9ceWJc3gyM7srgaZxiFWOVbyu260EYzzAqdz10mfo5xyXrCx+wEKtGo77JbtmwXvFLbwrGzwvw=="></script>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CS Boost | Joki Class Squad Free Fire</title>
-  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
-  <style>
-    body { font-family: 'Poppins', sans-serif; }
-    .glass { background: rgba(15, 23, 42, 0.65); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); }
-    .glass-light { background: rgba(30, 41, 59, 0.45); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
-    .price-item { transition: all .3s cubic-bezier(.4,0,.2,1); position: relative; overflow: hidden; }
-    .price-item::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(99,102,241,0.15), transparent); opacity: 0; transition: opacity .3s; }
-    .price-item:hover::before { opacity: 1; }
-    .price-item:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(99,102,241,.25); border-color: rgba(99,102,241,.6); }
-    .disabled-price { cursor: not-allowed !important; opacity: .5; }
-    .disabled-price:hover { transform: none !important; box-shadow: none !important; border-color: rgba(51,65,85,.4) !important; }
-    .disabled-price::before { display: none !important; }
-    .vip-card-hover { transition: all .3s cubic-bezier(.4,0,.2,1); }
-    .vip-card-hover:hover { transform: translateY(-4px) scale(1.01); box-shadow: 0 20px 60px rgba(251,191,36,.3); }
-    .glow-ring { box-shadow: 0 0 0 1px rgba(99,102,241,.3), 0 0 40px rgba(99,102,241,.08); }
-    
-    /* PREMIUM CYBER BACKGROUND */
+import { useState, useEffect } from 'react';
+import { Header } from './components/Header';
+import { PricingList } from './components/PricingList';
+import { VipCard } from './components/VipCard';
+import { NotesCard } from './components/NotesCard';
+import { FaqSection } from './components/FaqSection';
+import { Footer } from './components/Footer';
+import { CustomStarModal } from './components/CustomStarModal';
+import { CheckoutModal } from './components/CheckoutModal';
+import { OrderHistoryModal } from './components/OrderHistoryModal';
+import { OrderItem } from './types';
+import { Trophy } from 'lucide-react';
 
-body { 
-  font-family: 'Poppins', sans-serif;
-  background:#050816;
-  overflow-x:hidden;
-}
+export default function App() {
+  const [customModalOpen, setCustomModalOpen] = useState(false);
+  const [checkoutModalOpen, setCheckoutModalOpen] = useState(false);
+  const [historyModalOpen, setHistoryModalOpen] = useState(false);
 
-.cyber-bg {
-  position:fixed;
-  inset:0;
-  z-index:0;
-  background:
-  radial-gradient(circle at 15% 20%, rgba(0,255,255,.25), transparent 30%),
-  radial-gradient(circle at 85% 30%, rgba(139,92,246,.25), transparent 35%),
-  linear-gradient(135deg,#020617,#111827,#020617);
+  const [selectedOrder, setSelectedOrder] = useState<{
+    packageName: string;
+    totalPrice: number;
+    starsCount: number;
+  }>({
+    packageName: '',
+    totalPrice: 0,
+    starsCount: 0,
+  });
 
-  background-size:250% 250%;
-  animation:bgMove 15s ease infinite;
-}
-
-.cyber-bg::before {
-  content:"";
-  position:absolute;
-  inset:0;
-
-  background-image:
-  linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
-  linear-gradient(90deg,rgba(255,255,255,.03) 1px, transparent 1px);
-
-  background-size:60px 60px;
-}
-
-.cyber-bg::after {
-  content:"";
-  position:absolute;
-  inset:-50%;
-
-  background:
-  radial-gradient(#00e5ff 1px, transparent 2px);
-
-  background-size:80px 80px;
-  animation:stars 20s linear infinite;
-}
-
-
-@keyframes bgMove {
-
-0% {
-background-position:0% 50%;
-}
-
-50% {
-background-position:100% 50%;
-}
-
-100% {
-background-position:0% 50%;
-}
-
-}
-
-
-@keyframes stars {
-
-from {
-transform:translateY(0);
-}
-
-to {
-transform:translateY(-250px);
-}
-
-}
-
-    /* Entrances and Floatings */
-    .animate-float { animation: float 5s ease-in-out infinite; }
-    @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
-
-    .reveal-fade { animation: revealFade 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-    .reveal-slide-up { animation: revealSlideUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-
-    @keyframes revealFade {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
+  const [ordersHistory, setOrdersHistory] = useState<OrderItem[]>(() => {
+    try {
+      const saved = localStorage.getItem('cs_boost_orders');
+      return saved ? JSON.parse(saved) : [];
+    } catch {
+      return [];
     }
-    @keyframes revealSlideUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
+  });
+
+  useEffect(() => {
+    try {
+      localStorage.setItem('cs_boost_orders', JSON.stringify(ordersHistory));
+    } catch (e) {
+      console.error('Failed to save order history', e);
     }
-  </style>
-  <script src="/_sdk/935a53bc2e11fb8d.data_sdk.js" type="text/javascript" integrity="sha512-qr2oyPnEys1WebcOABaRh6hG77r5PWpqeWW6JTKbRJqly/INsfBi31CVNlTmHqjgeLpkVmmHZJUdxSx/32tOFQ=="></script>
-  <script src="/_sdk/7831c9b82769a23f.resizing_sdk.js" type="text/javascript" integrity="sha512-8T/qhF3yB5dtqHof6yvY2492zFsme1nYV1+FuXfYvPz63uo2L30fnKiOabmH0Sl3qhplMLgxjytDR8IvycRwKQ=="></script>
- </head>
- <body data-template-id="__page-root" class="min-h-screen"><!-- Interactive & Atmospheric Background Orbs and Grid -->
-  <div class="cyber-bg"></div>
-  <div class="w-full max-w-[920px] mx-auto px-5 py-14 relative z-10">
-   <header class="text-center mb-12 reveal-fade">
-    <span data-template-id="badge" class="canva-tag inline-block px-6 py-2.5 rounded-full font-semibold mb-5 text-sm tracking-wide shadow-lg" style="background: linear-gradient(135deg, rgb(79, 70, 229), rgb(139, 92, 246)); color: rgb(255, 255, 255); font-weight: 600; font-style: normal; font-size: 13px;">🔥 Trusted Joki Free Fire</span>
-    <h1 data-template-id="hero-title" class="canva-text font-extrabold tracking-tight leading-tight" style="color: rgb(224, 231, 255); font-weight: 800; font-style: normal; font-size: 48px;">CS Boost</h1>
-    <p data-template-id="hero-subtitle" class="canva-text mt-4 max-w-lg mx-auto leading-relaxed" style="color: rgb(148, 163, 184); font-weight: 400; font-style: normal; font-size: 17px;">Push Rank Class Squad dengan cepat, aman, dan terpercaya.</p>
-   </header>
-   <main data-template-id="main-card" class="canva-card glass glow-ring rounded-[2rem] p-9 border border-slate-700/40 shadow-2xl reveal-slide-up" style="background: rgba(15, 23, 42, 0.6);">
-    <h2 data-template-id="card-heading" class="canva-text text-center mb-8 font-bold" style="color: rgb(251, 191, 36); font-weight: 700; font-style: normal; font-size: 22px;">⭐ Jasa Joki Free Fire ⭐</h2>
-    <section class="mb-8">
-     <h3 data-template-id="price-heading" class="canva-text font-semibold mb-5" style="color: rgb(226, 232, 240); font-weight: 600; font-style: normal; font-size: 18px;">📌 Daftar Harga</h3>
-     <ul class="space-y-3">
-      <li class="disabled-price glass-light p-4 rounded-2xl border border-slate-700/40"><span data-template-id="price-perstar" class="canva-text font-medium" style="color: rgb(165, 180, 252); font-weight: 400; font-style: normal; font-size: 16px;">⭐ Per Star = Rp1.500</span></li>
-      <li class="price-item glass-light p-4 rounded-2xl cursor-pointer border border-slate-700/40" onclick="customStar()"><span data-template-id="price-custom" class="canva-text font-medium" style="color: rgb(165, 180, 252); font-weight: 400; font-style: normal; font-size: 16px;">⭐ Custom Bintang = Rp1.500 / ⭐ (Min. 12⭐ - Max. 200⭐)</span></li>
-      <li class="price-item glass-light p-4 rounded-2xl cursor-pointer border border-slate-700/40" onclick="checkout('60 Star',78000)"><span data-template-id="price-60" class="canva-text font-medium" style="color: rgb(165, 180, 252); font-weight: 400; font-style: normal; font-size: 16px;">⭐ 60 Star = Rp78.000</span></li>
-      <li class="price-item glass-light p-4 rounded-2xl cursor-pointer border border-slate-700/40" onclick="checkout('100 Star',100000)"><span data-template-id="price-100" class="canva-text font-medium" style="color: rgb(165, 180, 252); font-weight: 400; font-style: normal; font-size: 16px;">⭐ 100 Star = Rp100.000</span></li>
-     </ul>
-    </section>
-    <section class="mb-8">
-     <h3 data-template-id="promo-heading" class="canva-text font-semibold mb-3" style="color: rgb(226, 232, 240); font-weight: 600; font-style: normal; font-size: 18px;">👥 Promo Duo Squad</h3>
-     <div class="glass-light rounded-2xl p-5 border border-slate-700/30">
-      <ul class="space-y-2 text-sm text-slate-300">
-       <li class="flex items-start gap-2"><span class="text-indigo-400">•</span> Order minimal 100 Star.</li>
-       <li class="flex items-start gap-2"><span class="text-indigo-400">•</span> Teman juga order 100 Star.</li>
-       <li class="flex items-start gap-2"><span class="text-amber-400">🎁</span> Bonus masing-masing +10 Star.</li>
-      </ul>
-     </div>
-    </section>
-    <div data-template-id="vip-card" class="canva-card vip-card-hover animate-float rounded-[1.5rem] p-7 text-center cursor-pointer mb-8 border border-amber-400/40 shadow-xl" onclick="checkout('Paket VIP 14 Hari',300000)" style="background: linear-gradient(135deg, rgb(251, 191, 36), rgb(245, 158, 11));">
-     <h3 data-template-id="vip-title" class="canva-text font-bold" style="color: rgb(30, 41, 59); font-weight: 700; font-style: normal; font-size: 20px;">💎 Paket VIP 14 Hari</h3>
-     <div class="flex justify-center gap-6 mt-3 text-sm text-slate-800/80">
-      <span>⭐ 25 Star / Hari</span> <span>⭐ Total 350 Star</span>
-     </div>
-     <p data-template-id="vip-price" class="canva-text font-extrabold my-4" style="color: rgb(30, 41, 59); font-weight: 800; font-style: normal; font-size: 36px;">Rp300.000</p>
-     <div class="flex flex-wrap justify-center gap-3 text-xs text-slate-800/70 font-medium">
-      <span class="bg-white/40 px-3 py-1 rounded-full">🎁 Prioritas</span> <span class="bg-white/40 px-3 py-1 rounded-full">📊 Monitoring</span>
-     </div>
-     <p class="mt-4 font-bold text-sm text-slate-900/80">👆 Klik untuk Order VIP</p>
+  }, [ordersHistory]);
+
+  const handleSelectPresetPackage = (name: string, price: number, stars: number) => {
+    setSelectedOrder({
+      packageName: name,
+      totalPrice: price,
+      starsCount: stars,
+    });
+    setCheckoutModalOpen(true);
+  };
+
+  const handleSelectCustomStar = (stars: number, price: number) => {
+    setSelectedOrder({
+      packageName: `Custom ${stars} Star`,
+      totalPrice: price,
+      starsCount: stars,
+    });
+    setCustomModalOpen(false);
+    setCheckoutModalOpen(true);
+  };
+
+  const handleSelectVip = () => {
+    setSelectedOrder({
+      packageName: 'Paket VIP 14 Hari (350 Star)',
+      totalPrice: 300000,
+      starsCount: 350,
+    });
+    setCheckoutModalOpen(true);
+  };
+
+  const handleSaveOrder = (newOrder: OrderItem) => {
+    setOrdersHistory((prev) => [newOrder, ...prev]);
+  };
+
+  const handleClearHistory = () => {
+    setOrdersHistory([]);
+    try {
+      localStorage.removeItem('cs_boost_orders');
+    } catch (e) {
+      console.error('Failed to clear history', e);
+    }
+  };
+
+  return (
+    <div className="min-h-screen text-slate-100 relative selection:bg-indigo-500 selection:text-white">
+      {/* Atmosphere Animated Cyber Backgrounds */}
+      <div className="cyber-bg" />
+      <div className="cyber-grid" />
+
+      {/* Main Container */}
+      <div className="w-full max-w-[880px] mx-auto px-4 py-8 sm:py-12 relative z-10">
+        <Header
+          onOpenHistory={() => setHistoryModalOpen(true)}
+          historyCount={ordersHistory.length}
+        />
+
+        <main className="glass-panel rounded-[2rem] p-5 sm:p-8 border border-slate-700/50 shadow-2xl relative overflow-hidden">
+          {/* Main Card Header */}
+          <div className="text-center mb-8 pb-4 border-b border-slate-800/80">
+            <h2 className="text-xl sm:text-2xl font-black text-amber-400 tracking-tight flex items-center justify-center gap-2">
+              <Trophy className="w-6 h-6 text-amber-400 fill-amber-400/20" />
+              <span>Jasa Joki Free Fire Class Squad</span>
+            </h2>
+            <p className="text-xs sm:text-sm text-slate-400 mt-1">
+              Pilih paket yang sesuai dengan kebutuhan rank Anda
+            </p>
+          </div>
+
+          {/* Pricing list */}
+          <PricingList
+            onSelectPackage={handleSelectPresetPackage}
+            onOpenCustomModal={() => setCustomModalOpen(true)}
+          />
+
+          {/* VIP Package Card */}
+          <VipCard onSelectVip={handleSelectVip} />
+
+          {/* Notes Card */}
+          <NotesCard />
+
+          {/* FAQ Accordion */}
+          <FaqSection />
+        </main>
+
+        <Footer />
+      </div>
+
+      {/* Modals */}
+      <CustomStarModal
+        isOpen={customModalOpen}
+        onClose={() => setCustomModalOpen(false)}
+        onSubmit={handleSelectCustomStar}
+      />
+
+      <CheckoutModal
+        isOpen={checkoutModalOpen}
+        packageName={selectedOrder.packageName}
+        totalPrice={selectedOrder.totalPrice}
+        starsCount={selectedOrder.starsCount}
+        onClose={() => setCheckoutModalOpen(false)}
+        onSaveOrder={handleSaveOrder}
+      />
+
+      <OrderHistoryModal
+        isOpen={historyModalOpen}
+        orders={ordersHistory}
+        onClose={() => setHistoryModalOpen(false)}
+        onClearHistory={handleClearHistory}
+      />
     </div>
-    <section class="glass-light rounded-2xl p-5 border border-slate-700/30">
-     <h3 data-template-id="note-heading" class="canva-text font-semibold mb-2" style="color: rgb(226, 232, 240); font-weight: 600; font-style: normal; font-size: 18px;">📝 Catatan</h3>
-     <p data-template-id="note-text" class="canva-text text-sm leading-relaxed" style="color: rgb(148, 163, 184); font-weight: 400; font-style: normal; font-size: 16px;">Apabila akun tidak dimainkan lebih dari 12 jam, target hari tersebut dianggap selesai.</p>
-    </section>
-   </main>
-  </div><!-- Checkout Popup -->
-  <div class="hidden fixed inset-0 bg-black/80 backdrop-blur-md justify-center items-center z-50" id="popup">
-   <div data-template-id="popup-box" class="canva-panel glass glow-ring rounded-[2rem] p-8 w-[92%] max-w-[440px] text-center border border-indigo-500/30 max-h-[90vh] overflow-y-auto" style="background: rgba(15, 23, 42, 0.85);">
-    <h2 data-template-id="popup-title" class="canva-text font-bold mb-2" style="color: rgb(251, 191, 36); font-weight: 700; font-style: normal; font-size: 22px;">💳 Checkout</h2>
-    <p id="namaOrder" class="text-sm text-slate-300 mt-1"></p>
-    <p id="hargaOrder" class="text-3xl font-extrabold text-amber-400 my-4"></p>
-    <div class="bg-slate-800/60 p-5 rounded-2xl my-5 text-sm border border-slate-700/40">
-     <p class="text-slate-400">Bayar melalui:</p>
-     <p class="text-indigo-400 font-bold text-lg mt-1">DANA / QRIS</p>
-     <p class="mt-4 text-slate-400">Nomor DANA:</p>
-     <p class="font-bold text-white text-lg" id="nomorDana">081310575077</p><button onclick="copyDana()" class="w-full mt-3 py-3 rounded-full bg-indigo-500/90 hover:bg-indigo-500 text-white font-bold transition-all btn-glow">📋 Salin Nomor DANA</button>
-     <p class="mt-3 text-slate-400">Atas Nama: <b class="text-white">Fatan Trilaksono</b></p>
-    </div>
-    <div class="text-left mt-5">
-     <label data-template-id="uid-label" for="uid" class="canva-text block mb-2 text-sm font-medium" style="color: rgb(203, 213, 225); font-weight: 500; font-style: normal; font-size: 16px;">🆔 UID Free Fire</label> <input type="number" id="uid" placeholder="Masukkan UID FF" class="w-full p-3.5 rounded-xl bg-slate-800/80 text-white outline-none border border-slate-600/60 focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/20 transition-all">
-    </div><button data-template-id="wa-btn" class="canva-button w-full mt-5 py-3.5 rounded-full font-bold shadow-lg transition-all hover:shadow-xl" onclick="kirimWA()" style="background: rgb(37, 211, 102); color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">✅ Konfirmasi Order via WhatsApp</button>
-    <p class="mt-5 text-slate-500 cursor-pointer text-sm hover:text-white transition-colors" onclick="tutup()">✕ Tutup</p>
-   </div>
-  </div><!-- Custom Star Modal -->
-  <div class="hidden fixed inset-0 bg-black/80 backdrop-blur-md justify-center items-center z-50" id="customModal">
-   <div class="glass glow-ring rounded-[2rem] p-8 w-[90%] max-w-[400px] text-center border border-indigo-500/30">
-    <h3 class="text-white font-bold text-lg mb-2">⭐ Custom Bintang</h3>
-    <p class="text-slate-400 text-sm mb-5">Masukkan jumlah Star (Min 12 - Max 200)</p><input type="number" id="customStarInput" placeholder="Jumlah Star" class="w-full p-3.5 rounded-xl bg-slate-800/80 text-white outline-none border border-slate-600/60 focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/20 transition-all mb-2">
-    <p id="customError" class="text-red-400 text-xs mb-4 hidden"></p>
-    <div class="flex gap-3">
-     <button onclick="closeCustom()" class="flex-1 py-3 rounded-full bg-slate-700/80 text-white font-semibold hover:bg-slate-600 transition-colors">Batal</button> <button onclick="submitCustom()" class="flex-1 py-3 rounded-full bg-indigo-500 text-white font-bold hover:bg-indigo-600 transition-all btn-glow">Order</button>
-    </div>
-   </div>
-  </div>
-  <footer class="text-center py-10">
-   <p data-template-id="footer-text" class="canva-text text-sm" style="color: rgb(71, 85, 105); font-weight: 400; font-style: normal; font-size: 16px;">© 2026 CS Boost • Fast • Safe • Trusted</p>
-  </footer>
-  <script src="/_sdk/47669dc8496955be.editing_sdk.js" integrity="sha512-SXgqvNdy3CX4R90Kr2d0cSNYZOv6KbcxTq/tprZCtYPHhvtgc5Aagp95xl8W/LNBFpixAlLGqjQW133qbh1QAg=="></script>
-  <script>
-    let namaPesanan = "", hargaPesanan = "";
-
-    function customStar() {
-      document.getElementById("customModal").classList.remove("hidden");
-      document.getElementById("customModal").classList.add("flex");
-      document.getElementById("customStarInput").value = "";
-      document.getElementById("customError").classList.add("hidden");
-    }
-
-    function closeCustom() {
-      document.getElementById("customModal").classList.add("hidden");
-      document.getElementById("customModal").classList.remove("flex");
-    }
-
-    function submitCustom() {
-      const input = document.getElementById("customStarInput");
-      const err = document.getElementById("customError");
-      const val = Number(input.value);
-      if (!input.value.trim()) { err.textContent = "Jumlah Star belum diisi."; err.classList.remove("hidden"); return; }
-      if (!Number.isInteger(val)) { err.textContent = "Masukkan angka saja."; err.classList.remove("hidden"); return; }
-      if (val < 12) { err.textContent = "Minimal order 12 Star."; err.classList.remove("hidden"); return; }
-      if (val > 200) { err.textContent = "Maksimal order 200 Star."; err.classList.remove("hidden"); return; }
-      closeCustom();
-      checkout(val + " Star", val * 1500);
-    }
-
-    function checkout(nama, harga) {
-      namaPesanan = nama; hargaPesanan = harga;
-      const p = document.getElementById("popup");
-      p.classList.remove("hidden"); p.classList.add("flex");
-      document.getElementById("namaOrder").innerHTML = "Pesanan: ⭐ " + nama;
-      document.getElementById("hargaOrder").innerHTML = "Rp " + Number(harga).toLocaleString("id-ID");
-      document.getElementById("uid").value = "";
-    }
-
-    function copyDana() {
-      navigator.clipboard.writeText(document.getElementById("nomorDana").innerText);
-      const btn = event.target; btn.textContent = "✅ Tersalin!"; setTimeout(() => btn.textContent = "📋 Salin Nomor DANA", 2000);
-    }
-
-    function kirimWA() {
-      const uid = document.getElementById("uid").value.trim();
-      if (uid === "") { showUidError("Silakan isi UID Free Fire terlebih dahulu."); return; }
-      if (uid.length < 8) { showUidError("UID Free Fire minimal 8 angka."); return; }
-      const s = new Date(), tanggal = s.toLocaleDateString("id-ID"), jam = s.toLocaleTimeString("id-ID");
-      const kode = "CSB-" + Math.floor(100000 + Math.random() * 900000);
-      const pesan = "Halo CS Boost 👋\n\nSaya ingin konfirmasi order.\n\n🎫 Kode Order : " + kode +
-        "\n\n📦 Pesanan : ⭐ " + namaPesanan + "\n💰 Total : Rp " + Number(hargaPesanan).toLocaleString("id-ID") +
-        "\n\n🆔 UID FF : " + uid + "\n\n📅 Tanggal : " + tanggal + "\n⏰ Jam : " + jam +
-        "\n\nMohon dicek dan diproses. Terima kasih 🙏";
-      window.open("https://wa.me/6283824959777?text=" + encodeURIComponent(pesan), "_blank");
-    }
-
-    function showUidError(msg) {
-      const input = document.getElementById("uid");
-      input.style.borderColor = "#ef4444";
-      input.placeholder = msg;
-      setTimeout(() => { input.style.borderColor = ""; input.placeholder = "Masukkan UID FF"; }, 3000);
-    }
-
-    function tutup() { const p = document.getElementById("popup"); p.classList.add("hidden"); p.classList.remove("flex"); }
-    window.onclick = function(e) {
-      if (e.target === document.getElementById("popup")) tutup();
-      if (e.target === document.getElementById("customModal")) closeCustom();
-    }
-    document.getElementById("uid").addEventListener("input", function() { this.value = this.value.replace(/[^0-9]/g, ''); });
-    document.getElementById("customStarInput").addEventListener("input", function() { this.value = this.value.replace(/[^0-9]/g, ''); });
-    lucide.createIcons();
-  </script>
- 
-</body></html>
+  );
+}
