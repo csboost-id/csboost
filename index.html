@@ -268,7 +268,8 @@ Atas Nama: <b class="text-white">Fatan Trilaksono</b>
   </footer>
   <script src="/_sdk/47669dc8496955be.editing_sdk.js" integrity="sha512-SXgqvNdy3CX4R90Kr2d0cSNYZOv6KbcxTq/tprZCtYPHhvtgc5Aagp95xl8W/LNBFpixAlLGqjQW133qbh1QAg=="></script>
   <script>
-    let namaPesanan = "", hargaPesanan = "";
+    let namaPesanan = null;
+let hargaPesanan = null;
 
 let sedangMengirim = false;
 let waktuOrderTerakhir = Number(localStorage.getItem("lastOrder")) || 0;
@@ -447,7 +448,7 @@ function kirimWA() {
         return;
     }
 
-    if(namaPesanan === "" || hargaPesanan === "") {
+    if(namaPesanan === "" || hargaPesanan === "" || hargaPesanan === null) {
     alert("Silakan pilih paket terlebih dahulu.");
     return;
 }
