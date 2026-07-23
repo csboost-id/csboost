@@ -156,7 +156,8 @@ style="color: rgb(165,180,252);">
      </div>
     </section>
     <div data-template-id="vip-card" class="canva-card vip-card-hover animate-float rounded-[1.5rem] p-7 text-center cursor-pointer mb-8 border border-amber-400/40 shadow-xl" onclick="checkout('Paket VIP 14 Hari',300000)" style="background: linear-gradient(135deg, rgb(251, 191, 36), rgb(245, 158, 11));">
-     <h3 data-template-id="vip-title" class="canva-text font-bold" style="color: rgb(30, 41, 59); font-weight: 700; font-style: normal; font-si  ze: 20px;">💎 Paket VIP 14 Hari</h3>
+     <h3 data-template-id="vip-title" class="canva-text font-bold" style="color: rgb(30, 41, 59); font-weight: 700; font-style: normal; font-size:20px;">
+💎 Paket VIP 14 Hari</h3>
      <div class="flex justify-center gap-6 mt-3 text-sm text-slate-800/80">
       <span>⭐ 25 Star / Hari</span> <span>⭐ Total 350 Star</span>
      </div>
@@ -333,6 +334,8 @@ function checkout(nama, harga) {
     "Rp " + Number(harga).toLocaleString("id-ID");
 
     document.getElementById("uid").value = "";
+  document.getElementById("nomorDana").innerText = "Klik tombol untuk melihat nomor pembayaran";
+
 }
 
 
@@ -403,6 +406,14 @@ function kirimWA() {
 
 }
 
+function tutup(){
+
+    const p = document.getElementById("popup");
+
+    p.classList.add("hidden");
+    p.classList.remove("flex");
+
+}
 
 
 function showUidError(msg){
