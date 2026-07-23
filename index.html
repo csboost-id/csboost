@@ -213,7 +213,9 @@ style="color: rgb(165,180,252);">
 </div>
 
 
-<div class="mt-4 p-4 rounded-xl bg-amber-400/10 border border-amber-400/30">
+<div 
+onclick="orderAkunGooglePromo()"
+class="mt-4 p-4 rounded-xl bg-amber-400/10 border border-amber-400/30 cursor-pointer hover:bg-amber-400/20 transition">
 
    <p class="text-amber-300 font-bold">
    🔥 Promo Terbatas
@@ -225,6 +227,10 @@ style="color: rgb(165,180,252);">
 
    <p class="text-white font-semibold mt-1">
    ⭐ 4 Akun Google + Rp13.500 = 12 STAR
+   </p>
+
+   <p class="text-amber-200 text-sm mt-3">
+   👆 Klik untuk order promo
    </p>
 
 </div>
@@ -711,7 +717,25 @@ function tukarGoogle(){
 
 }
 
+function orderAkunGooglePromo(){
 
+    const pesan =
+    "Halo CS Boost 👋\n\n"+
+    "Saya ingin order Promo STAR + Akun Google.\n\n"+
+    "📩 Jumlah Akun : 4 Akun Google\n"+
+    "💰 Harga : Rp13.500\n"+
+    "⭐ Reward : 12 STAR\n\n"+
+    "Mohon dicek dan diproses.\n"+
+    "Terima kasih 🙏";
+
+
+    window.open(
+        "https://wa.me/6283824959777?text=" + encodeURIComponent(pesan),
+        "_blank"
+    );
+
+}
+    
 lucide.createIcons();
 
 
