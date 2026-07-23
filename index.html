@@ -136,7 +136,8 @@ onclick="customStarLarge()">
 <span class="canva-text font-medium"
 style="color: rgb(165,180,252);">
 
-⭐ Custom Bintang Besar = Rp1.500 / ⭐ (Min. 201⭐ - Max. 499⭐)
+⭐ Custom Bintang Besar = Rp1.300 / ⭐ (Min. 201⭐ - Max. 333⭐)
+
 
 </span>
 
@@ -284,14 +285,16 @@ function customStar() {
 
 function customStarLarge() {
     customMin = 201;
-    customMax = 499;
+    customMax = 333;
 
     document.querySelector("#customModal h3").innerHTML = "⭐ Custom Bintang Besar";
     document.querySelector("#customModal p.text-slate-400").innerHTML =
-    "Masukkan jumlah Star (Min 201 - Max 499)";
+    "Masukkan jumlah Star (Min 201 - Max 333)";
+
 
     openCustomModal();
 }
+
 
 
 function openCustomModal(){
@@ -350,7 +353,10 @@ function submitCustom(){
 
     closeCustom();
 
-checkout(val + " Star", val * 1500);
+let hargaStar = (customMin === 201) ? 1300 : 1500;
+
+checkout(val + " Star", val * hargaStar);
+
 
 }
 
