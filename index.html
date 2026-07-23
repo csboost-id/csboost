@@ -142,8 +142,7 @@ style="color: rgb(165,180,252);">
 
 </li>
 
-      <li class="price-item glass-light p-4 rounded-2xl cursor-pointer border border-slate-700/40" onclick="checkout('100 Star',150000)"
-><span data-template-id="price-100" class="canva-text font-medium" style="color: rgb(165, 180, 252); font-weight: 400; font-style: normal; font-size: 16px;">⭐ 100 Star = Rp100.000</span></li>
+      
      </ul>
     </section>
     <section class="mb-8">
@@ -157,7 +156,7 @@ style="color: rgb(165,180,252);">
      </div>
     </section>
     <div data-template-id="vip-card" class="canva-card vip-card-hover animate-float rounded-[1.5rem] p-7 text-center cursor-pointer mb-8 border border-amber-400/40 shadow-xl" onclick="checkout('Paket VIP 14 Hari',300000)" style="background: linear-gradient(135deg, rgb(251, 191, 36), rgb(245, 158, 11));">
-     <h3 data-template-id="vip-title" class="canva-text font-bold" style="color: rgb(30, 41, 59); font-weight: 700; font-style: normal; font-size: 20px;">💎 Paket VIP 14 Hari</h3>
+     <h3 data-template-id="vip-title" class="canva-text font-bold" style="color: rgb(30, 41, 59); font-weight: 700; font-style: normal; font-si  ze: 20px;">💎 Paket VIP 14 Hari</h3>
      <div class="flex justify-center gap-6 mt-3 text-sm text-slate-800/80">
       <span>⭐ 25 Star / Hari</span> <span>⭐ Total 350 Star</span>
      </div>
@@ -182,11 +181,23 @@ style="color: rgb(165,180,252);">
      <p class="text-slate-400">Bayar melalui:</p>
      <p class="text-indigo-400 font-bold text-lg mt-1">DANA / QRIS</p>
      <p class="mt-4 text-slate-400">Nomor DANA:</p>
-     <p class="font-bold text-white text-lg" id="nomorDana">081310575077</p><button onclick="copyDana()" class="w-full mt-3 py-3 rounded-full bg-indigo-500/90 hover:bg-indigo-500 text-white font-bold transition-all btn-glow">📋 Salin Nomor DANA</button>
-     <p class="mt-3 text-slate-400">Atas Nama: <b class="text-white">Fatan Trilaksono</b></p>
+
+<p class="font-bold text-white text-lg" id="nomorDana">
+Klik tombol untuk melihat nomor pembayaran
+</p>
+
+<button onclick="showDana()" class="w-full mt-3 py-3 rounded-full bg-indigo-500/90 hover:bg-indigo-500 text-white font-bold transition-all btn-glow">
+💳 Tampilkan Nomor DANA
+</button>
+
+<p class="mt-3 text-slate-400">
+Atas Nama: <b class="text-white">Fatan Trilaksono</b>
+</p>
+
     </div>
     <div class="text-left mt-5">
-     <label data-template-id="uid-label" for="uid" class="canva-text block mb-2 text-sm font-medium" style="color: rgb(203, 213, 225); font-weight: 500; font-style: normal; font-size: 16px;">🆔 UID Free Fire</label> <input type="number" id="uid" placeholder="Masukkan UID FF" class="w-full p-3.5 rounded-xl bg-slate-800/80 text-white outline-none border border-slate-600/60 focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/20 transition-all">
+     <label data-template-id="uid-label" for="uid" class="canva-text block mb-2 text-sm font-medium" style="color: rgb(203, 213, 225); font-weight: 500; font-style: normal; font-size: 16px;">🆔 UID Free Fire</label> <input type="text" id="uid" inputmode="numeric" placeholder="Masukkan UID FF"
+ class="w-full p-3.5 rounded-xl bg-slate-800/80 text-white outline-none border border-slate-600/60 focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/20 transition-all">
     </div><button data-template-id="wa-btn" class="canva-button w-full mt-5 py-3.5 rounded-full font-bold shadow-lg transition-all hover:shadow-xl" onclick="kirimWA()" style="background: rgb(37, 211, 102); color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">✅ Konfirmasi Order via WhatsApp</button>
     <p class="mt-5 text-slate-500 cursor-pointer text-sm hover:text-white transition-colors" onclick="tutup()">✕ Tutup</p>
    </div>
@@ -298,6 +309,12 @@ checkout(val + " Star", val * 1500);
 
 
 function checkout(nama, harga) {
+
+    if(!nama || !harga){
+        alert("Order tidak valid.");
+        return;
+    }
+
     namaPesanan = nama;
     hargaPesanan = harga;
 
@@ -311,100 +328,107 @@ function checkout(nama, harga) {
 
     document.getElementById("uid").value = "";
 }
-function copyDana() {
 
-    navigator.clipboard.writeText(
-        document.getElementById("nomorDana").innerText
-    );
+<button onclick="showDana()" 
+class="w-full mt-3 py-3 rounded-full bg-indigo-500/90 hover:bg-indigo-500 text-white font-bold transition-all btn-glow">
+💳 Tampilkan Nomor DANA
+</button>
 
-    const btn = document.querySelector("#nomorDana + button");
+<button onclick="copyDana()" 
+class="w-full mt-3 py-3 rounded-full bg-green-500/90 hover:bg-green-500 text-white font-bold transition-all">
+📋 Salin Nomor DANA
+</button>
 
-    btn.textContent = "✅ Tersalin!";
 
-    setTimeout(() => {
-        btn.textContent = "📋 Salin Nomor DANA";
-    },2000);
+
+function showDana(){
+
+    document.getElementById("nomorDana").innerText = "081310575077";
 
 }
 
 
-
 function kirimWA() {
+
     const uid = document.getElementById("uid").value.trim();
 
-    if (uid === "") {
+    if(uid === ""){
         showUidError("Silakan isi UID Free Fire terlebih dahulu.");
         return;
     }
 
-    if (uid.length < 8) {
+    if(!/^[0-9]+$/.test(uid)){
+        showUidError("UID hanya boleh angka.");
+        return;
+    }
+
+    if(uid.length < 8){
         showUidError("UID Free Fire minimal 8 angka.");
         return;
     }
 
-    const s = new Date();
-    const tanggal = s.toLocaleDateString("id-ID");
-    const jam = s.toLocaleTimeString("id-ID");
 
-    const kode = "CSB-" + Math.floor(100000 + Math.random() * 900000);
+    const tanggal = new Date().toLocaleDateString("id-ID");
+    const jam = new Date().toLocaleTimeString("id-ID");
+
+    const kode = "CSB-" + Math.floor(100000 + Math.random()*900000);
+
 
     const pesan =
-    "Halo CS Boost 👋\n\nSaya ingin konfirmasi order.\n\n" +
-    "🎫 Kode Order : " + kode +
-    "\n\n📦 Pesanan : ⭐ " + namaPesanan +
-    "\n💰 Total : Rp " + Number(hargaPesanan).toLocaleString("id-ID") +
-    "\n\n🆔 UID FF : " + uid +
-    "\n\n📅 Tanggal : " + tanggal +
-    "\n⏰ Jam : " + jam +
+    "Halo CS Boost 👋\n\n"+
+    "Saya ingin konfirmasi order.\n\n"+
+    "🎫 Kode Order : "+kode+
+    "\n\n📦 Pesanan : ⭐ "+namaPesanan+
+    "\n💰 Total : Rp "+Number(hargaPesanan).toLocaleString("id-ID")+
+    "\n\n🆔 UID FF : "+uid+
+    "\n\n📅 Tanggal : "+tanggal+
+    "\n⏰ Jam : "+jam+
     "\n\nMohon dicek dan diproses. Terima kasih 🙏";
 
+
     window.open(
-    "https://wa.me/6283824959777?text=" + encodeURIComponent(pesan),
+    "https://wa.me/6283824959777?text="+encodeURIComponent(pesan),
     "_blank"
     );
+
 }
 
 
-function showUidError(msg) {
-    const input = document.getElementById("uid");
-    input.style.borderColor = "#ef4444";
-    input.placeholder = msg;
 
-    setTimeout(() => {
-        input.style.borderColor = "";
-        input.placeholder = "Masukkan UID FF";
+function showUidError(msg){
+
+    const input=document.getElementById("uid");
+
+    input.style.borderColor="#ef4444";
+    input.placeholder=msg;
+
+    setTimeout(()=>{
+
+        input.style.borderColor="";
+        input.placeholder="Masukkan UID FF";
+
     },3000);
+
 }
 
 
-function tutup() {
-    const p = document.getElementById("popup");
-    p.classList.add("hidden");
-    p.classList.remove("flex");
-}
 
+document.getElementById("uid").addEventListener("input",function(){
 
-window.onclick = function(e) {
+    this.value=this.value.replace(/[^0-9]/g,'');
 
-    if(e.target === document.getElementById("popup")) {
-        tutup();
-    }
-
-    if(e.target === document.getElementById("customModal")) {
-        closeCustom();
-    }
-
-};
-
-
-document.getElementById("uid").addEventListener("input", function(){
-    this.value = this.value.replace(/[^0-9]/g,'');
 });
 
 
-document.getElementById("customStarInput").addEventListener("input", function(){
-    this.value = this.value.replace(/[^0-9]/g,'');
+document.getElementById("customStarInput").addEventListener("input",function(){
+
+    this.value=this.value.replace(/[^0-9]/g,'');
+
 });
 
 
 lucide.createIcons();
+
+</script>
+</body>
+</html>
