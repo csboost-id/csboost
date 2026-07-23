@@ -464,6 +464,7 @@ if(uid.length < 8){
 
 if(uid.length > 20){
     showUidError("UID Free Fire maksimal 20 angka.");
+    document.getElementById("uid").value = uid.slice(0,20);
     return;
 }
 
@@ -527,7 +528,11 @@ function showUidError(msg){
 
 document.getElementById("uid").addEventListener("input",function(){
 
-    this.value=this.value.replace(/[^0-9]/g,'');
+    this.value = this.value.replace(/[^0-9]/g,'');
+
+    if(this.value.length > 20){
+        this.value = this.value.slice(0,20);
+    }
 
 });
 
