@@ -271,8 +271,7 @@ Atas Nama: <b class="text-white">Fatan Trilaksono</b>
     let namaPesanan = "", hargaPesanan = "";
 
 let sedangMengirim = false;
-let waktuOrderTerakhir = 0;
-
+let waktuOrderTerakhir = Number(localStorage.getItem("lastOrder")) || 0;
     let customMin = 12;
 let customMax = 200;
 
@@ -433,12 +432,20 @@ function copyDana(){
 
 
 function kirimWA() {
-  const sekarang = Date.now();
 
-if (sekarang - waktuOrderTerakhir < 5000) {
-    alert("⏳ Tunggu 5 detik sebelum mengirim order lagi.");
-    return;
-}
+    const sekarang = Date.now();
+
+
+    if(sedangMengirim){
+        alert("⏳ Order sedang diproses...");
+        return;
+    }
+
+
+    if (sekarang - waktuOrderTerakhir < 5000) {
+        alert("⏳ Tunggu 5 detik sebelum mengirim order lagi.");
+        return;
+    }
 
     if(namaPesanan === "" || hargaPesanan === "") {
     alert("Silakan pilih paket terlebih dahulu.");
@@ -464,17 +471,18 @@ if(uid.length < 8){
 
 if(uid.length > 20){
     showUidError("UID Free Fire maksimal 20 angka.");
-    document.getElementById("uid").value = uid.slice(0,20);
     return;
 }
 
 
+// DI SINI BARU
+sedangMengirim = true;
 
-    const tanggal = new Date().toLocaleDateString("id-ID");
-    const jam = new Date().toLocaleTimeString("id-ID");
 
-    const kode = "CSB-" + Math.floor(100000 + Math.random()*900000);
+const tanggal = new Date().toLocaleDateString("id-ID");
+const jam = new Date().toLocaleTimeString("id-ID");
 
+const kode = "CSB-" + Math.floor(100000 + Math.random()*900000);
 
     const pesan =
     "Halo CS Boost 👋\n\n"+
@@ -489,11 +497,18 @@ if(uid.length > 20){
 
 
     window.open(
-    "https://wa.me/6283824959777?text="+encodeURIComponent(pesan),
+    "https://wa.me/6283824959777?text=" + encodeURIComponent(pesan),
     "_blank"
-    );
+);
 
+// simpan waktu order untuk anti spam
 waktuOrderTerakhir = Date.now();
+localStorage.setItem("lastOrder", waktuOrderTerakhir);
+
+// buka kunci tombol setelah 5 detik
+setTimeout(() => {
+    sedangMengirim = false;
+}, 5000);
 
 }
 
