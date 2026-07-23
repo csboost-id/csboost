@@ -130,8 +130,20 @@ transform:translateY(-250px);
      <ul class="space-y-3">
       <li class="disabled-price glass-light p-4 rounded-2xl border border-slate-700/40"><span data-template-id="price-perstar" class="canva-text font-medium" style="color: rgb(165, 180, 252); font-weight: 400; font-style: normal; font-size: 16px;">⭐ Per Star = Rp1.500</span></li>
       <li class="price-item glass-light p-4 rounded-2xl cursor-pointer border border-slate-700/40" onclick="customStar()"><span data-template-id="price-custom" class="canva-text font-medium" style="color: rgb(165, 180, 252); font-weight: 400; font-style: normal; font-size: 16px;">⭐ Custom Bintang = Rp1.500 / ⭐ (Min. 12⭐ - Max. 200⭐)</span></li>
-      <li class="price-item glass-light p-4 rounded-2xl cursor-pointer border border-slate-700/40" onclick="checkout('60 Star',78000)"><span data-template-id="price-60" class="canva-text font-medium" style="color: rgb(165, 180, 252); font-weight: 400; font-style: normal; font-size: 16px;">⭐ 60 Star = Rp78.000</span></li>
-      <li class="price-item glass-light p-4 rounded-2xl cursor-pointer border border-slate-700/40" onclick="checkout('100 Star',100000)"><span data-template-id="price-100" class="canva-text font-medium" style="color: rgb(165, 180, 252); font-weight: 400; font-style: normal; font-size: 16px;">⭐ 100 Star = Rp100.000</span></li>
+      <li class="price-item glass-light p-4 rounded-2xl cursor-pointer border border-slate-700/40"
+onclick="customStarLarge()">
+
+<span class="canva-text font-medium"
+style="color: rgb(165,180,252);">
+
+⭐ Custom Bintang Besar = Rp1.500 / ⭐ (Min. 201⭐ - Max. 499⭐)
+
+</span>
+
+</li>
+
+      <li class="price-item glass-light p-4 rounded-2xl cursor-pointer border border-slate-700/40" onclick="checkout('100 Star',150000)"
+><span data-template-id="price-100" class="canva-text font-medium" style="color: rgb(165, 180, 252); font-weight: 400; font-style: normal; font-size: 16px;">⭐ 100 Star = Rp100.000</span></li>
      </ul>
     </section>
     <section class="mb-8">
@@ -196,72 +208,203 @@ transform:translateY(-250px);
   <script>
     let namaPesanan = "", hargaPesanan = "";
 
-    function customStar() {
-      document.getElementById("customModal").classList.remove("hidden");
-      document.getElementById("customModal").classList.add("flex");
-      document.getElementById("customStarInput").value = "";
-      document.getElementById("customError").classList.add("hidden");
+    let customMin = 12;
+let customMax = 200;
+
+
+function customStar() {
+    customMin = 12;
+    customMax = 200;
+
+    document.querySelector("#customModal h3").innerHTML = "⭐ Custom Bintang";
+    document.querySelector("#customModal p.text-slate-400").innerHTML =
+    "Masukkan jumlah Star (Min 12 - Max 200)";
+
+    openCustomModal();
+}
+
+
+function customStarLarge() {
+    customMin = 201;
+    customMax = 499;
+
+    document.querySelector("#customModal h3").innerHTML = "⭐ Custom Bintang Besar";
+    document.querySelector("#customModal p.text-slate-400").innerHTML =
+    "Masukkan jumlah Star (Min 201 - Max 499)";
+
+    openCustomModal();
+}
+
+
+function openCustomModal(){
+    document.getElementById("customModal").classList.remove("hidden");
+    document.getElementById("customModal").classList.add("flex");
+    document.getElementById("customStarInput").value = "";
+    document.getElementById("customError").classList.add("hidden");
+}
+
+
+function closeCustom(){
+    document.getElementById("customModal").classList.add("hidden");
+    document.getElementById("customModal").classList.remove("flex");
+}
+
+
+function submitCustom(){
+
+    const input = document.getElementById("customStarInput");
+    const err = document.getElementById("customError");
+
+    const val = Number(input.value);
+
+
+    if(!input.value.trim()){
+        err.textContent = "Jumlah Star belum diisi.";
+        err.classList.remove("hidden");
+        return;
     }
 
-    function closeCustom() {
-      document.getElementById("customModal").classList.add("hidden");
-      document.getElementById("customModal").classList.remove("flex");
+
+    if(!Number.isInteger(val)){
+        err.textContent = "Masukkan angka saja.";
+        err.classList.remove("hidden");
+        return;
     }
 
-    function submitCustom() {
-      const input = document.getElementById("customStarInput");
-      const err = document.getElementById("customError");
-      const val = Number(input.value);
-      if (!input.value.trim()) { err.textContent = "Jumlah Star belum diisi."; err.classList.remove("hidden"); return; }
-      if (!Number.isInteger(val)) { err.textContent = "Masukkan angka saja."; err.classList.remove("hidden"); return; }
-      if (val < 12) { err.textContent = "Minimal order 12 Star."; err.classList.remove("hidden"); return; }
-      if (val > 200) { err.textContent = "Maksimal order 200 Star."; err.classList.remove("hidden"); return; }
-      closeCustom();
-      checkout(val + " Star", val * 1500);
+
+    if(val < customMin){
+
+        err.textContent = "Minimal order " + customMin + " Star.";
+        err.classList.remove("hidden");
+        return;
+
     }
 
-    function checkout(nama, harga) {
-      namaPesanan = nama; hargaPesanan = harga;
-      const p = document.getElementById("popup");
-      p.classList.remove("hidden"); p.classList.add("flex");
-      document.getElementById("namaOrder").innerHTML = "Pesanan: ⭐ " + nama;
-      document.getElementById("hargaOrder").innerHTML = "Rp " + Number(harga).toLocaleString("id-ID");
-      document.getElementById("uid").value = "";
+
+    if(val > customMax){
+
+        err.textContent = "Maksimal order " + customMax + " Star.";
+        err.classList.remove("hidden");
+        return;
+
     }
 
-    function copyDana() {
-      navigator.clipboard.writeText(document.getElementById("nomorDana").innerText);
-      const btn = event.target; btn.textContent = "✅ Tersalin!"; setTimeout(() => btn.textContent = "📋 Salin Nomor DANA", 2000);
+
+    closeCustom();
+
+checkout(val + " Star", val * 1500);
+
+}
+
+
+function checkout(nama, harga) {
+    namaPesanan = nama;
+    hargaPesanan = harga;
+
+    const p = document.getElementById("popup");
+    p.classList.remove("hidden");
+    p.classList.add("flex");
+
+    document.getElementById("namaOrder").innerHTML = "Pesanan: ⭐ " + nama;
+    document.getElementById("hargaOrder").innerHTML =
+    "Rp " + Number(harga).toLocaleString("id-ID");
+
+    document.getElementById("uid").value = "";
+}
+function copyDana() {
+
+    navigator.clipboard.writeText(
+        document.getElementById("nomorDana").innerText
+    );
+
+    const btn = document.querySelector("#nomorDana + button");
+
+    btn.textContent = "✅ Tersalin!";
+
+    setTimeout(() => {
+        btn.textContent = "📋 Salin Nomor DANA";
+    },2000);
+
+}
+
+
+
+function kirimWA() {
+    const uid = document.getElementById("uid").value.trim();
+
+    if (uid === "") {
+        showUidError("Silakan isi UID Free Fire terlebih dahulu.");
+        return;
     }
 
-    function kirimWA() {
-      const uid = document.getElementById("uid").value.trim();
-      if (uid === "") { showUidError("Silakan isi UID Free Fire terlebih dahulu."); return; }
-      if (uid.length < 8) { showUidError("UID Free Fire minimal 8 angka."); return; }
-      const s = new Date(), tanggal = s.toLocaleDateString("id-ID"), jam = s.toLocaleTimeString("id-ID");
-      const kode = "CSB-" + Math.floor(100000 + Math.random() * 900000);
-      const pesan = "Halo CS Boost 👋\n\nSaya ingin konfirmasi order.\n\n🎫 Kode Order : " + kode +
-        "\n\n📦 Pesanan : ⭐ " + namaPesanan + "\n💰 Total : Rp " + Number(hargaPesanan).toLocaleString("id-ID") +
-        "\n\n🆔 UID FF : " + uid + "\n\n📅 Tanggal : " + tanggal + "\n⏰ Jam : " + jam +
-        "\n\nMohon dicek dan diproses. Terima kasih 🙏";
-      window.open("https://wa.me/6283824959777?text=" + encodeURIComponent(pesan), "_blank");
+    if (uid.length < 8) {
+        showUidError("UID Free Fire minimal 8 angka.");
+        return;
     }
 
-    function showUidError(msg) {
-      const input = document.getElementById("uid");
-      input.style.borderColor = "#ef4444";
-      input.placeholder = msg;
-      setTimeout(() => { input.style.borderColor = ""; input.placeholder = "Masukkan UID FF"; }, 3000);
+    const s = new Date();
+    const tanggal = s.toLocaleDateString("id-ID");
+    const jam = s.toLocaleTimeString("id-ID");
+
+    const kode = "CSB-" + Math.floor(100000 + Math.random() * 900000);
+
+    const pesan =
+    "Halo CS Boost 👋\n\nSaya ingin konfirmasi order.\n\n" +
+    "🎫 Kode Order : " + kode +
+    "\n\n📦 Pesanan : ⭐ " + namaPesanan +
+    "\n💰 Total : Rp " + Number(hargaPesanan).toLocaleString("id-ID") +
+    "\n\n🆔 UID FF : " + uid +
+    "\n\n📅 Tanggal : " + tanggal +
+    "\n⏰ Jam : " + jam +
+    "\n\nMohon dicek dan diproses. Terima kasih 🙏";
+
+    window.open(
+    "https://wa.me/6283824959777?text=" + encodeURIComponent(pesan),
+    "_blank"
+    );
+}
+
+
+function showUidError(msg) {
+    const input = document.getElementById("uid");
+    input.style.borderColor = "#ef4444";
+    input.placeholder = msg;
+
+    setTimeout(() => {
+        input.style.borderColor = "";
+        input.placeholder = "Masukkan UID FF";
+    },3000);
+}
+
+
+function tutup() {
+    const p = document.getElementById("popup");
+    p.classList.add("hidden");
+    p.classList.remove("flex");
+}
+
+
+window.onclick = function(e) {
+
+    if(e.target === document.getElementById("popup")) {
+        tutup();
     }
 
-    function tutup() { const p = document.getElementById("popup"); p.classList.add("hidden"); p.classList.remove("flex"); }
-    window.onclick = function(e) {
-      if (e.target === document.getElementById("popup")) tutup();
-      if (e.target === document.getElementById("customModal")) closeCustom();
+    if(e.target === document.getElementById("customModal")) {
+        closeCustom();
     }
-    document.getElementById("uid").addEventListener("input", function() { this.value = this.value.replace(/[^0-9]/g, ''); });
-    document.getElementById("customStarInput").addEventListener("input", function() { this.value = this.value.replace(/[^0-9]/g, ''); });
-    lucide.createIcons();
-  </script>
- 
-</body></html>
+
+};
+
+
+document.getElementById("uid").addEventListener("input", function(){
+    this.value = this.value.replace(/[^0-9]/g,'');
+});
+
+
+document.getElementById("customStarInput").addEventListener("input", function(){
+    this.value = this.value.replace(/[^0-9]/g,'');
+});
+
+
+lucide.createIcons();
