@@ -404,17 +404,25 @@ function copyDana(){
 
     const nomor = "081310575077";
 
-    navigator.clipboard.writeText(nomor)
-    .then(() => {
+    if(navigator.clipboard){
 
-        alert("Nomor DANA berhasil disalin");
+        navigator.clipboard.writeText(nomor)
+        .then(() => {
 
-    })
-    .catch(() => {
+            alert("Nomor DANA berhasil disalin");
 
-        alert("Gagal menyalin nomor DANA");
+        })
+        .catch(() => {
 
-    });
+            alert("Gagal menyalin nomor DANA. Salin manual: " + nomor);
+
+        });
+
+    } else {
+
+        alert("Salin manual: " + nomor);
+
+    }
 
 }
 
@@ -422,6 +430,11 @@ function copyDana(){
 
 
 function kirimWA() {
+
+    if(!namaPesanan || !hargaPesanan){
+        alert("Silakan pilih paket terlebih dahulu.");
+        return;
+    }
 
 
     const uid = document.getElementById("uid").value.trim();
@@ -431,12 +444,12 @@ function kirimWA() {
         return;
     }
 
-    if(!/^[0-9]+$/.test(uid)){
-        showUidError("UID hanya boleh angka.");
-        return;
-    }
 
-    if(uid.length < 8){
+    if(!/^[0-9]+$/.test(uid)){
+    showUidError("UID hanya boleh angka.");
+    return;}
+
+if(uid.length < 8){
     showUidError("UID Free Fire minimal 8 angka.");
     return;
 }
@@ -445,6 +458,7 @@ if(uid.length > 20){
     showUidError("UID Free Fire maksimal 20 angka.");
     return;
 }
+
 
 
     const tanggal = new Date().toLocaleDateString("id-ID");
@@ -540,14 +554,11 @@ function cekPromoSeason(){
 
 
     if(sekarang >= mulaiPromo && sekarang < selesaiPromo){
+    promo.style.display = "block";
+} else {
+    promo.style.display = "none";
+}
 
-        promo.style.display = "block";
-
-    } else {
-
-        promo.style.display = "none";
-
-    }
 
 }
 
