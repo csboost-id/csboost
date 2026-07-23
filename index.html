@@ -156,10 +156,12 @@ style="color: rgb(165,180,252);">
       </ul>
      </div>
     </section>
-    <div data-template-id="vip-card" 
-class="canva-card vip-card-hover animate-float rounded-[1.5rem] p-7 text-center cursor-pointer mb-8 border border-amber-400/40 shadow-xl" 
-onclick="checkout('Promo 40% Duo Season Akhir',630000)" 
-style="background: linear-gradient(135deg, rgb(251, 191, 36), rgb(245, 158, 11));">
+    <div id="promoSeason"
+data-template-id="vip-card"
+class="canva-card vip-card-hover animate-float rounded-[1.5rem] p-7 text-center cursor-pointer mb-8 border border-amber-400/40 shadow-xl"
+onclick="checkout('Promo 40% Duo Season Akhir',630000)"
+style="background: linear-gradient(135deg, rgb(251,191,36), rgb(245,158,11));">
+
 
      <h3 data-template-id="vip-title" 
 class="canva-text font-bold"
@@ -505,6 +507,46 @@ document.getElementById("customStarInput").addEventListener("input",function(){
 
 });
 
+function cekPromoSeason(){
+
+    const sekarang = new Date();
+
+
+    // Patokan season baru = tanggal 1 bulan depan
+    const target = new Date(
+        sekarang.getFullYear(),
+        sekarang.getMonth() + 1,
+        1
+    );
+
+
+    // Promo mulai H-10
+    const mulaiPromo = new Date(target);
+    mulaiPromo.setDate(target.getDate() - 10);
+
+
+    // Promo selesai H-7
+    const selesaiPromo = new Date(target);
+    selesaiPromo.setDate(target.getDate() - 7);
+
+
+    const promo = document.getElementById("promoSeason");
+
+
+    if(sekarang >= mulaiPromo && sekarang < selesaiPromo){
+
+        promo.style.display = "block";
+
+    } else {
+
+        promo.style.display = "none";
+
+    }
+
+}
+
+
+cekPromoSeason();
 
 lucide.createIcons();
 
