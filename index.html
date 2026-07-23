@@ -533,7 +533,8 @@ function cekPromoSeason(){
     const promo = document.getElementById("promoSeason");
 
 
-    if(sekarang >= mulaiPromo && sekarang < selesaiPromo){
+    if(sekarang >= mulaiPromo && sekarang <= selesaiPromo
+){
 
         promo.style.display = "block";
 
