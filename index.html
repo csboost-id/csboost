@@ -129,14 +129,14 @@ transform:translateY(-250px);
      <h3 data-template-id="price-heading" class="canva-text font-semibold mb-5" style="color: rgb(226, 232, 240); font-weight: 600; font-style: normal; font-size: 18px;">📌 Daftar Harga</h3>
      <ul class="space-y-3">
       <li class="disabled-price glass-light p-4 rounded-2xl border border-slate-700/40"><span data-template-id="price-perstar" class="canva-text font-medium" style="color: rgb(165, 180, 252); font-weight: 400; font-style: normal; font-size: 16px;">⭐ Per Star = Rp1.500</span></li>
-      <li class="price-item glass-light p-4 rounded-2xl cursor-pointer border border-slate-700/40" onclick="customStar()"><span data-template-id="price-custom" class="canva-text font-medium" style="color: rgb(165, 180, 252); font-weight: 400; font-style: normal; font-size: 16px;">⭐ Custom Bintang = Rp1.500 / ⭐ (Min. 12⭐ - Max. 200⭐)</span></li>
+      <li class="price-item glass-light p-4 rounded-2xl cursor-pointer border border-slate-700/40" onclick="customStar()"><span data-template-id="price-custom" class="canva-text font-medium" style="color: rgb(165, 180, 252); font-weight: 400; font-style: normal; font-size: 16px;">⭐ Custom Bintang = Rp1.500 / ⭐ (Min. 12⭐ - Max. 30⭐)</span></li>
       <li class="price-item glass-light p-4 rounded-2xl cursor-pointer border border-slate-700/40"
 onclick="customStarLarge()">
 
 <span class="canva-text font-medium"
 style="color: rgb(165,180,252);">
 
-⭐ Custom Bintang Besar = Rp1.300 / ⭐ (Min. 201⭐ - Max. 333⭐)
+⭐ Custom Bintang Besar = Rp1.300 / ⭐ (Min. 60⭐ - Max. 100⭐)
 
 
 </span>
@@ -353,7 +353,9 @@ Atas Nama: <b class="text-white">Fatan Trilaksono</b>
   <div class="hidden fixed inset-0 bg-black/80 backdrop-blur-md justify-center items-center z-50" id="customModal">
    <div class="glass glow-ring rounded-[2rem] p-8 w-[90%] max-w-[400px] text-center border border-indigo-500/30">
     <h3 class="text-white font-bold text-lg mb-2">⭐ Custom Bintang</h3>
-    <p class="text-slate-400 text-sm mb-5">Masukkan jumlah Star (Min 12 - Max 200)</p><input type="number" id="customStarInput" placeholder="Jumlah Star" class="w-full p-3.5 rounded-xl bg-slate-800/80 text-white outline-none border border-slate-600/60 focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/20 transition-all mb-2">
+    <p class="text-slate-400 text-sm mb-5">
+Masukkan jumlah Star (Min 12 - Max 30)
+</p><input type="number" id="customStarInput" placeholder="Jumlah Star" class="w-full p-3.5 rounded-xl bg-slate-800/80 text-white outline-none border border-slate-600/60 focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/20 transition-all mb-2">
     <p id="customError" class="text-red-400 text-xs mb-4 hidden"></p>
     <div class="flex gap-3">
      <button onclick="closeCustom()" class="flex-1 py-3 rounded-full bg-slate-700/80 text-white font-semibold hover:bg-slate-600 transition-colors">Batal</button> <button onclick="submitCustom()" class="flex-1 py-3 rounded-full bg-indigo-500 text-white font-bold hover:bg-indigo-600 transition-all btn-glow">Order</button>
@@ -371,28 +373,26 @@ let hargaPesanan = null;
 let sedangMengirim = false;
 let waktuOrderTerakhir = Number(localStorage.getItem("lastOrder")) || 0;
     let customMin = 12;
-let customMax = 200;
+let customMax = 30;
 
 
 function customStar() {
     customMin = 12;
-    customMax = 200;
+customMax = 30;
 
-    document.querySelector("#customModal h3").innerHTML = "⭐ Custom Bintang";
-    document.querySelector("#customModal p.text-slate-400").innerHTML =
-    "Masukkan jumlah Star (Min 12 - Max 200)";
+document.querySelector("#customModal p.text-slate-400").innerHTML =
+"Masukkan jumlah Star (Min 12 - Max 30)";
 
     openCustomModal();
 }
 
 
 function customStarLarge() {
-    customMin = 201;
-    customMax = 333;
+    customMin = 60;
+customMax = 100;
 
-    document.querySelector("#customModal h3").innerHTML = "⭐ Custom Bintang Besar";
-    document.querySelector("#customModal p.text-slate-400").innerHTML =
-    "Masukkan jumlah Star (Min 201 - Max 333)";
+document.querySelector("#customModal p.text-slate-400").innerHTML =
+"Masukkan jumlah Star (Min 60 - Max 100)";
 
 
     openCustomModal();
@@ -456,7 +456,7 @@ function submitCustom(){
 
     closeCustom();
 
-let hargaStar = (customMin === 201) ? 1300 : 1500;
+let hargaStar = customMin >= 60 ? 1300 : 1500;
 
 checkout(val + " Star", val * hargaStar);
 
